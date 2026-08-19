@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 奧地利 (10/31-11/12)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: #f5f0e8;
+            color: #333;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 8px 15px;
+            background: linear-gradient(135deg, #1a4a3a, #2d7a6a, #3a9ab5);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin-bottom: 4px;
+        }
+
+        .flight-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 8px;
+            margin-top: 6px;
+            font-size: 0.85em;
+        }
+
+        .flight-info p {
+            margin: 5px 0;
+        }
+
+        .notice {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Tab navigation - pure CSS radio */
+        input[name="dtab"] { display: none; }
+
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 20px;
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-nav label {
+            padding: 8px 14px;
+            background: #e8e8e8;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab-nav label:hover { background: #d0e7f7; }
+
+        .tab-nav label.lnk {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .tab-nav label.lnk:hover { background: #c8e6c9; }
+
+        /* Tab content */
+        .tab-content { display: none; }
+
+        /* Inactive tab groups - color-coded by accommodation, gray-toned */
+        .tab-nav label.grp-lake { background: #e0e7e6; color: #3d5c57; }
+        .tab-nav label.grp-salz { background: #e8e0ec; color: #4a3d54; }
+        .tab-nav label.grp-inns { background: #ede8e3; color: #5c4a3a; }
+        .tab-nav label.grp-ck { background: #efebe9; color: #4e342e; }
+        .tab-nav label.grp-prag { background: #ebe4e6; color: #5a3a40; }
+        .tab-nav label.grp-wien { background: #e3e7ed; color: #3a4a5c; }
+
+        /* Active tab - unified dark gray */
+        #d2:checked ~ .tab-nav label[for="d2"],
+        #d3:checked ~ .tab-nav label[for="d3"],
+        #d4:checked ~ .tab-nav label[for="d4"],
+        #d5:checked ~ .tab-nav label[for="d5"],
+        #d6:checked ~ .tab-nav label[for="d6"],
+        #d7:checked ~ .tab-nav label[for="d7"],
+        #d8:checked ~ .tab-nav label[for="d8"],
+        #d9:checked ~ .tab-nav label[for="d9"],
+        #d10:checked ~ .tab-nav label[for="d10"],
+        #d11:checked ~ .tab-nav label[for="d11"],
+        #d12:checked ~ .tab-nav label[for="d12"] {
+            background: #424242;
+            color: white;
+            font-weight: bold;
+        }
+
+        #dlnk:checked ~ .tab-nav label[for="dlnk"] {
+            background: #2e7d32;
+            color: white;
+            font-weight: bold;
+        }
+
+        #d2:checked ~ .tab-content.t2,
+        #d3:checked ~ .tab-content.t3,
+        #d4:checked ~ .tab-content.t4,
+        #d5:checked ~ .tab-content.t5,
+        #d6:checked ~ .tab-content.t6,
+        #d7:checked ~ .tab-content.t7,
+        #d8:checked ~ .tab-content.t8,
+        #d9:checked ~ .tab-content.t9,
+        #d10:checked ~ .tab-content.t10,
+        #d11:checked ~ .tab-content.t11,
+        #d12:checked ~ .tab-content.t12,
+        #dlnk:checked ~ .tab-content.tlnk { display: block; }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #3498db;
+        }
+
+        .day-card h2 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .day-card h3 {
+            color: #555;
+            font-weight: normal;
+            font-size: 1em;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .day-card .itinerary {
+            margin-bottom: 12px;
+        }
+
+        .day-card .meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .day-card .meta p {
+            margin: 4px 0;
+        }
+
+        .day-card .warning {
+            background: #fff8e1;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 0.88em;
+            color: #856404;
+        }
+
+        .day-card .warning p {
+            margin: 3px 0;
+        }
+
+        .day-card .mvp {
+            background: #e8f5e9;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 0.88em;
+            color: #2e7d32;
+        }
+
+        .day-card .links {
+            margin-top: 12px;
+            font-size: 0.9em;
+        }
+
+        .day-card a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .day-card a:hover {
+            text-decoration: underline;
+        }
+
+        .links-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .links-section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .links-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .links-section li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .links-section li:last-child {
+            border-bottom: none;
+        }
+
+        .links-section a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .links-section a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            border: none;
+            background: #3498db;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Rich day card styles */
+        .day-card-rich {
+            padding: 0;
+            border-left: none;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 25px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+        }
+
+        .hero-overlay h2 {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 4px;
+        }
+
+        .hero-overlay p {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .day-body {
+            padding: 25px;
+        }
+
+        .accommodation-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 25px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: #ddd;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #bbb;
+            border: 2px solid white;
+        }
+
+        .timeline-item.highlight::before {
+            background: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .timeline-time {
+            font-weight: bold;
+            color: #3498db;
+            min-width: 50px;
+            font-size: 0.9em;
+        }
+
+        .timeline-content strong {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .timeline-content p {
+            font-size: 0.88em;
+            color: #666;
+        }
+
+        /* Photo gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 6px 8px;
+            font-size: 0.75em;
+            text-align: center;
+        }
+
+        /* MVP highlight */
+        .mvp-highlight {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mvp-icon {
+            font-size: 2em;
+        }
+
+        .mvp-text strong {
+            display: block;
+            color: #2e7d32;
+            margin-bottom: 3px;
+        }
+
+        .mvp-text p {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Info grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 12px 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .info-icon {
+            font-size: 1.5em;
+            margin-bottom: 4px;
+        }
+
+        .info-label {
+            font-size: 0.75em;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-weight: bold;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        /* Warning box */
+        .warning-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            background: #fff8e1;
+            border-left: 3px solid #ffc107;
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin-bottom: 15px;
+            font-size: 0.88em;
+            color: #856404;
+        }
+
+        .warning-icon {
+            flex-shrink: 0;
+        }
+
+        /* CTA link */
+        .cta-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Schedule table */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.88em;
+        }
+
+        .schedule-table thead {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .schedule-table th {
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .schedule-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-table tbody tr:hover {
+            background: #f0f7ff;
+        }
+
+        .schedule-table .highlight-row {
+            background: #e8f5e9;
+        }
+
+        .schedule-table .highlight-row:hover {
+            background: #c8e6c9;
+        }
+
+        .cta-link a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .cta-link a:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .day-card {
+                padding: 18px;
+            }
+
+            .tab-btn {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+
+            .hero-image {
+                height: 200px;
+            }
+
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>2026 奧地利 10/31-11/12</h1>
+            <div class="flight-info">
+                <p>Day  1｜10/31（六）22:30 TPE 出發</p>
+                <p>Day 13｜11/12（四）12:05 VIE 返台</p>
+            </div>
+        </header>
+
+        <div class="notice">
+            <strong>注意：</strong>11 月阿爾卑斯山區日落約 16:30～17:00，山區路夜間較暗，盡量 17:30 前抵達住宿地點。
+        </div>
+
+        <!-- Tab Navigation -->
+        <input type="radio" name="dtab" id="d2" checked>
+        <input type="radio" name="dtab" id="d3">
+        <input type="radio" name="dtab" id="d4">
+        <input type="radio" name="dtab" id="d5">
+        <input type="radio" name="dtab" id="d6">
+        <input type="radio" name="dtab" id="d7">
+        <input type="radio" name="dtab" id="d8">
+        <input type="radio" name="dtab" id="d9">
+        <input type="radio" name="dtab" id="d10">
+        <input type="radio" name="dtab" id="d11">
+        <input type="radio" name="dtab" id="d12">
+        <input type="radio" name="dtab" id="dlnk">
+
+        <div class="tab-nav">
+            <label for="d2" class="grp-lake">Day 2</label>
+            <label for="d3" class="grp-lake">Day 3</label>
+            <label for="d4" class="grp-lake">Day 4</label>
+            <label for="d5" class="grp-salz">Day 5</label>
+            <label for="d6" class="grp-salz">Day 6</label>
+            <label for="d7" class="grp-inns">Day 7</label>
+            <label for="d8" class="grp-ck">Day 8</label>
+            <label for="d9" class="grp-prag">Day 9</label>
+            <label for="d10" class="grp-prag">Day 10</label>
+            <label for="d11" class="grp-wien">Day 11</label>
+            <label for="d12" class="grp-wien">Day 12</label>
+            <label for="dlnk" class="lnk">官網連結</label>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="tab-content t2" id="day2">
+            <div class="day-card day-card-rich">
+                <!-- Hero image -->
+                <div class="hero-image">
+                    <img src="https://www.thetravelbuglife.com/wp-content/uploads/2023/04/reflection-gosausee.jpg" alt="Gosausee Dachstein reflection" style="object-position: center 55%;">
+                    <div class="hero-overlay">
+                        <h2>Day 2｜11/1（日）</h2>
+                        <p>Gosau 纜車 → 戈紹湖 → 聖沃夫岡夕陽</p>
+                    </div>
+                </div>
+
+                <div class="day-body">
+                    <div class="accommodation-badge">湖區住宿（St. Gilgen）</div>
+
+                    <!-- Timeline -->
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">08:10</div>
+                            <div class="timeline-content">
+                                <strong>抵達維也納機場</strong>
+                                <p>租車直接上高速公路前往湖區</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:15</div>
+                            <div class="timeline-content">
+                                <strong>抵達 Gosau</strong>
+                                <p>直接前往纜車站，午餐在車上解決</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">13:30</div>
+                            <div class="timeline-content">
+                                <strong>Gosaukamm Cable Car</strong>
+                                <p>搭纜車上山（最後營運日）→ Zwieselalm 山景散步</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:30</div>
+                            <div class="timeline-content">
+                                <strong>下山 → 戈紹湖</strong>
+                                <p>欣賞 Dachstein 群山在 Gosausee 湖面的完美倒影</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-content">
+                                <strong>聖沃夫岡湖畔夕陽</strong>
+                                <p>前往 St. Wolfgang 湖畔欣賞黃昏美景</p>
+                            </div>
+                        </div>
+                    </div>
+<!-- Photo spots -->
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://a.storyblok.com/f/243512/1920x976/d7869d003a/dachsteinwest-gosaukammbahn-header.jpg/m/2400x1518" alt="Gosaukamm Cable Car">
+                            <span class="gallery-caption">Gosaukamm Cable Car</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://ak-d.tripcdn.com/images/1mi3l224x98maxuhp4A24_Q90.jpg?proc=source/trip" alt="Gosausee lake reflection">
+                            <span class="gallery-caption">戈紹湖倒影</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://mimigo.tw/wp-content/uploads/20250215223526_0_3edc9d.jpg" alt="St Wolfgang sunset">
+                            <span class="gallery-caption">聖沃夫岡黃昏</span>
+                        </div>
+                    </div>
+
+                    <!-- MVP highlight -->
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">📸</div>
+                        <div class="mvp-text">
+                            <strong>今日必拍</strong>
+                            <p>戈紹湖 Dachstein 倒影 + 聖沃夫岡湖畔黃昏光線</p>
+                        </div>
+                    </div>
+
+                    <!-- Info cards -->
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">約 3h50</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🌅</div>
+                            <div class="info-label">日落</div>
+                            <div class="info-value">~16:45</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏔️</div>
+                            <div class="info-label">纜車</div>
+                            <div class="info-value">最後營運日</div>
+                        </div>
+                    </div>
+
+                    <!-- Warning -->
+                    <div class="warning-box">
+                        <span class="warning-icon">⚠️</span>
+                        <span>直接衝纜車，午餐在車上吃。Gosaukamm Cable Car 為季節性營運，11/1 可能是最後營運日，務必提前確認。</span>
+                    </div>
+
+                    <!-- Link -->
+                    <div class="cta-link">
+                        <a href="https://www.dachstein.at/en/summer/cable-cars/gosaukammbahn" target="_blank">
+                            🔗 Gosaukamm Cable Car 官網 — 確認營運時間
+                        </a>
+                    </div>
+
+                    <!-- Accommodation options -->
+                    <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                        <strong style="color: #6a1b9a;">🏠 聖沃夫岡湖區住宿選擇（11/1-11/4，3 晚）</strong>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/24836887?check_in=2026-11-01&check_out=2026-11-04&guests=1&adults=4&s=67&unique_share_id=37e470f1-3fdd-433a-b8ab-c0b789e28055" target="_blank">Abersee 公寓</a></li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/41439366?check_in=2026-11-01&check_out=2026-11-04&guests=1&adults=4&s=67&unique_share_id=28f82cb8-95fc-4c04-83f7-2412ecf02228" target="_blank">Madlingerhof 度假別墅</a></li>
+                            <li style="padding: 6px 0;"><a href="https://www.airbnb.com.tw/rooms/1122409012319255783?check_in=2026-11-01&check_out=2026-11-04&guests=1&adults=4&s=67&unique_share_id=95428d38-7499-4ad6-9250-6cdbeb66fee1" target="_blank">公寓 Nr.8</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="tab-content t3" id="day3">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRABZPfN8462hyoo06080YgGR8H-hOyO8ZqHG3nLHen5L1KFODo6PWkgGI&s=10" alt="Hallstatt lakeside view" style="object-position: center 50%;">
+                    <div class="hero-overlay">
+                        <h2>Day 3｜11/2（一）</h2>
+                        <p>Hallstatt 一日遊</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">湖區住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">08:00</div>
+                            <div class="timeline-content">
+                                <strong>聖吉爾根出發 → Bad Ischl</strong>
+                                <p>順路停 Bad Ischl 喝咖啡+甜點，皇家小鎮漫步（車程 20min）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:30</div>
+                            <div class="timeline-content">
+                                <strong>前往 Hallstatt</strong>
+                                <p>Bad Ischl 到 Hallstatt 約 20 分鐘，停車首選 P2（纜車站旁）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">10:00</div>
+                            <div class="timeline-content">
+                                <strong>Skywalk 觀景台 + 鹽礦導覽（Optional）</strong>
+                                <p>搭纜車上山俯瞰湖景，山頂接近 0°C 穿厚外套，鹽礦選擇性，Day6也有鹽礦。</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:45</div>
+                            <div class="timeline-content">
+                                <strong>湖畔午餐</strong>
+                                <p>推薦 Seehotel Gruner Baum，現烤鱒魚或燉肉暖胃</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">15:00</div>
+                            <div class="timeline-content">
+                                <strong>Hallstatt 明信片觀景點（黃金微光）</strong>
+                                <p>冬季低角度陽光灑在木屋，最佳拍照時段</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:00</div>
+                            <div class="timeline-content">
+                                <strong>市集廣場 + 人骨屋（Optional） + Hallstatt 暮色夜景</strong>
+                                <p>逛人骨屋、逛市集廣場，16:45 天黑後路燈亮起，湖面波光粼粼</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-content">
+                                <strong>返回聖吉爾根</strong>
+                                <p>平地公路，約 45 分鐘回到住宿</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://travelwithmiya.com/wp-content/uploads/2021/09/hallstatt-03.jpg" alt="Hallstatt classic viewpoint">
+                            <span class="gallery-caption">明信片觀景點</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/jzeityhljedwahyvy4u4/%E5%BE%9E%E7%B6%AD%E4%B9%9F%E7%B4%8D%E5%87%BA%E7%99%BC%E7%9A%84%E5%93%88%E4%BF%AE%E5%A1%94%E7%89%B9%E4%B8%80%E6%97%A5%E9%81%8A%EF%BC%8C%E5%90%AB%E5%A4%A9%E7%A9%BA%E6%AD%A5%E9%81%93%E7%BA%9C%E8%BB%8A%E6%88%96%E4%B9%98%E8%88%B9%E9%81%8A%E8%A6%BD.jpg" alt="Hallstatt Skywalk">
+                            <span class="gallery-caption">Skywalk 俯瞰</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://andyventure.com/wp-content/uploads/austria/hallstatt/20240420_DSC07792.webp" alt="Hallstatt old town">
+                            <span class="gallery-caption">老街與湖畔</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">單程 40min</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">📷</div>
+                            <div class="info-label">最佳時段</div>
+                            <div class="info-value">14:00 金光</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🅿️</div>
+                            <div class="info-label">停車</div>
+                            <div class="info-value">P2 纜車站旁</div>
+                        </div>
+                    </div>
+                    <div class="warning-box">
+                        <span class="warning-icon">⚠️</span>
+                        <span>11 月淡季不需趕早，但纜車最後下山 16:30、鹽礦最後一班 15:00，注意官網確認。山頂接近 0°C，務必帶厚外套、毛帽、手套。</span>
+                    </div>
+                    <div class="cta-link">
+                        <a href="https://www.salzwelten.at/en/hallstatt/prices-opening-hours" target="_blank">
+                            🔗 Skywalk 纜車開放時間
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="tab-content t4" id="day4">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://oliviatraveling.com/wp-content/uploads/2024/04/%E6%9C%AA%E5%91%BD%E5%90%8D%E7%9A%84%E4%BD%9C%E5%93%81-5-4.jpg" alt="Wolfgangsee lake panorama" style="object-position: center 70%;">
+                    <div class="hero-overlay">
+                        <h2>Day 4｜11/3（二）</h2>
+                        <p>湖區小鎮巡遊</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">湖區住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:00</div>
+                            <div class="timeline-content">
+                                <strong>出發往聖沃夫岡（St. Wolfgang）</strong>
+                                <p>湖畔經典小鎮散步，白馬飯店旁拍照（車程 10min）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:00</div>
+                            <div class="timeline-content">
+                                <strong>午餐（St. Wolfgang 或 Strobl）</strong>
+                                <p>Strobl 是 Postalm 山路入口，吃飽再決定上山或備案</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">13:00</div>
+                            <div class="timeline-content">
+                                <strong>Postalm 山路觀景</strong>
+                                <p>下午山景最好，阿爾卑斯高原公路。若封山備案：Fuschlsee 湖畔（從 St. Gilgen 15min）或提早去 Mondsee</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">16:00</div>
+                            <div class="timeline-content">
+                                <strong>Mondsee 黃昏</strong>
+                                <p>湖畔黃昏散步，金色光線，回 St. Gilgen 約 20min</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://cdn.getyourguide.com/img/tour/4e850dc0676e639d5b5b3564ff131caf604c50c3d47c2adacac64a9b6981aafc.jpg/68.jpg" alt="Bad Ischl town">
+                            <span class="gallery-caption">Bad Ischl 皇家小鎮</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI3wMjBoHoENDIn0_a9g9yGzD_nOaH8cAaMq4yQtnUtnolcf8Bg8-Z1Ghg&s=10" alt="Postalm alpine road">
+                            <span class="gallery-caption">Postalm 山景</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQbTOX74uSyGsyCLTlK97OIUZ_r-Ubm68QU9lgFoLvKZ5oFK5OLXjI9S8&s=10" alt="Mondsee sunset">
+                            <span class="gallery-caption">Mondsee 黃昏</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">全天 1h30</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">☕</div>
+                            <div class="info-label">節奏</div>
+                            <div class="info-value">悠閒慢遊</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏔️</div>
+                            <div class="info-label">海拔</div>
+                            <div class="info-value">Postalm 高原</div>
+                        </div>
+                    </div>
+                    <div class="warning-box">
+                        <span class="warning-icon">⚠️</span>
+                        <span>Postalm 出發前確認是否封山，Fuschlsee 或 Mondsee 作為備案。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="tab-content t5" id="day5">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9jk3jZU4kh3P42sjSEm4NMg2w0BBrGnt-KqvqPCGR2bP8ZzSMc0l1BWo&s=10" alt="Salzburg old town" style="object-position: center 90%;">
+                    <div class="hero-overlay">
+                        <h2>Day 5｜11/4（三）</h2>
+                        <p>薩爾斯堡老城</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">薩爾斯堡住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:00</div>
+                            <div class="timeline-content">
+                                <strong>聖吉爾根出發 → 薩爾斯堡</strong>
+                                <p>早餐後告別湖區，車程約 30 分鐘，行李放車上先逛</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:00</div>
+                            <div class="timeline-content">
+                                <strong>米拉貝爾花園</strong>
+                                <p>真善美取景地，巴洛克花園</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:30</div>
+                            <div class="timeline-content">
+                                <strong>糧食胡同（Getreidegasse）</strong>
+                                <p>過橋進老城，莫札特出生地，鍛鐵招牌老街</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:30</div>
+                            <div class="timeline-content">
+                                <strong>老城區午餐</strong>
+                                <p>奧地利傳統料理</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:00</div>
+                            <div class="timeline-content">
+                                <strong>莫札特廣場 + 大教堂 + 老城漫步</strong>
+                                <p>老城中心廣場，薩爾斯堡大教堂</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">15:30</div>
+                            <div class="timeline-content">
+                                <strong>薩爾斯堡城堡要塞夕陽</strong>
+                                <p>搭纜車上城堡，歐洲最大中世紀城堡，俯瞰全城+夕陽（17:00 關門）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-content">
+                                <strong>下山 → 前往飯店 Check-in</strong>
+                                <p>結束老城行程，開車去住宿</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=400,height=265,dpr=2/tour_img/e236cb4f96a813fe9473e272f939f6ec1d56113d334712cd1c98e966ce7643eb.jpg" alt="Mirabell Garden">
+                            <span class="gallery-caption">米拉貝爾花園</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhcvQbrUzbOPIv2IlhMsaxOa8EqnwoKxC_Gc_RYm4M7Q&s=10" alt="Getreidegasse">
+                            <span class="gallery-caption">糧食胡同</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT16t06N5j6N34dywsgboQGUhdQNaDNkV_kbjp1Qco1c2lR4SZUTfmkQ_p09oH7DBnXeVIPaD8NVl7wiiNEo-ZK2Vk&s=19" alt="Hohensalzburg Fortress view">
+                            <span class="gallery-caption">薩爾斯堡城堡</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">約 30min</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🎵</div>
+                            <div class="info-label">主題</div>
+                            <div class="info-value">莫札特之城</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🌅</div>
+                            <div class="info-label">必看</div>
+                            <div class="info-value">城堡俯瞰</div>
+                        </div>
+                    </div>
+
+                    <!-- Accommodation options -->
+                    <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                        <strong style="color: #6a1b9a;">🏠 薩爾斯堡住宿選擇（11/4-11/6，2 晚）</strong>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/644042441353087517?check_in=2026-11-04&check_out=2026-11-06&guests=1&adults=1&s=67&unique_share_id=d7604ef5-1690-4ec1-981d-d681e661c8b5" target="_blank">Suite1 im Haus Arenberg</a></li>
+                            <li style="padding: 6px 0;"><a href="https://www.airbnb.com.tw/rooms/1090568182235226542?check_in=2026-11-04&check_out=2026-11-06&guests=1&adults=1&s=67&unique_share_id=20a1b350-75cf-4f79-b068-4535be5abc3b" target="_blank">Glan Living 頂層公寓</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="tab-content t6" id="day6">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://www.hotelscombined.com.tw/news/wp-content/uploads/sites/316/2019/07/Feature-3.jpg" alt="Konigssee lake" style="object-position: center 90%;">
+                    <div class="hero-overlay">
+                        <h2>Day 6｜11/5（四）</h2>
+                        <p>國王湖冬季一日遊</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">薩爾斯堡住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">07:15</div>
+                            <div class="timeline-content">
+                                <strong>出發前往國王湖</strong>
+                                <p>趕搭第一班船</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">08:00</div>
+                            <div class="timeline-content">
+                                <strong>國王湖（Konigssee）第一班船</strong>
+                                <p>翡翠湖水 + 峽谷回音 → St. Bartholoma 紅蔥頭教堂</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">10:45</div>
+                            <div class="timeline-content">
+                                <strong>Ramsau 明信片教堂</strong>
+                                <p>巴伐利亞最經典的明信片角度</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">11:15</div>
+                            <div class="timeline-content">
+                                <strong>Hintersee 湖畔步道</strong>
+                                <p>趁中午光線好拍湖面倒影</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:15</div>
+                            <div class="timeline-content">
+                                <strong>午餐（Berchtesgaden 鎮上）</strong>
+                                <p>德式料理，為下午鹽礦補充體力</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:30</div>
+                            <div class="timeline-content">
+                                <strong>Berchtesgaden 鹽礦區</strong>
+                                <p>冬季最後入場 15:00，建議 13:30 到（含換裝）。導覽約 1.5hr</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:30</div>
+                            <div class="timeline-content">
+                                <strong>返回薩爾斯堡</strong>
+                                <p>車程約 30 分鐘</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://blog-static.kkday.com/zh-tw/blog/wp-content/uploads/900_Germany_Munich_%E5%9C%8B%E7%8E%8B%E6%B9%96-K%C3%B6nigssee_AShutterstock_331585490.jpg" alt="Konigssee boat ride">
+                            <span class="gallery-caption">國王湖下湖遊船</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://blog-static.kkday.com/zh-tw/blog/wp-content/uploads/shutterstock_769544302.jpg" alt="Ramsau church">
+                            <span class="gallery-caption">Ramsau 明信片教堂</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://ericgo.com/wp-content/uploads/20240207003003_0.jpg" alt="Berchtesgaden salt mine">
+                            <span class="gallery-caption">鹽礦區</span>
+                        </div>
+                    </div>
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">🌟</div>
+                        <div class="mvp-text">
+                            <strong>今日必拍</strong>
+                            <p>Ramsau 明信片角度 + Hintersee 湖面倒影</p>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">全天 1h50</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🚢</div>
+                            <div class="info-label">遊船</div>
+                            <div class="info-value">搭第一班</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">⛏️</div>
+                            <div class="info-label">鹽礦</div>
+                            <div class="info-value">導覽 2h</div>
+                        </div>
+                    </div>
+                    <div class="warning-box">
+                        <span class="warning-icon">⚠️</span>
+                        <span>國王湖 11 月班次變少，一定要搭第一班。鹽礦冬季（11/4 起）營業 11:00-15:00，最後入場 15:00，務必 13:30 前抵達。</span>
+                    </div>
+                    <div class="cta-link">
+                        <a href="https://www.seenschifffahrt.de/en/koenigssee" target="_blank">🔗 國王湖遊船</a>
+                        &nbsp;&nbsp;
+                        <a href="https://www.salzbergwerk.de/en/ticketshop/select" target="_blank">🔗 鹽礦購票</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="tab-content t7" id="day7">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2RjGaJ_zAh7Ozj1Ery6sc5uBzohHjan_nZiUAJ_vTKg2DnIhJ3F2wBoIh&s=10" alt="Kitzsteinhorn glacier panorama">
+                    <div class="hero-overlay">
+                        <h2>Day 7｜11/6（五）</h2>
+                        <p>Kitzsteinhorn 冰川 → Zell am See → 茵斯布魯克</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">茵斯布魯克住宿</div>
+
+                    <!-- Timeline -->
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">08:00</div>
+                            <div class="timeline-content">
+                                <strong>薩爾斯堡出發 → Kaprun</strong>
+                                <p>車程約 75 分鐘，前往 Kitzsteinhorn 纜車站</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">09:30</div>
+                            <div class="timeline-content">
+                                <strong>TOP OF SALZBURG（3,029m）</strong>
+                                <p>搭纜車上冰川｜山頂設施：Panorama Platform, National Park Gallery, Cinema 3000</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:00</div>
+                            <div class="timeline-content">
+                                <strong>下山 → 午餐：Berggasthof Mitterberg</strong>
+                                <p>開車上山 10min<br>俯瞰 Zell am See 湖＋Kitzsteinhorn 午餐<br>若未營業：改在 Zell am See 湖畔餐廳用餐</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">13:30</div>
+                            <div class="timeline-content">
+                                <strong>Zell am See 湖畔 或 Going am Wilder Kaiser </strong>
+                                <p>湖畔步道漫步，雪山映湖經典角度，喝杯咖啡放鬆</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:15</div>
+                            <div class="timeline-content">
+                                <strong>出發 → 茵斯布魯克</strong>
+                                <p>走 B311 + A12 高速公路，車程約 1h40min</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">16:00</div>
+                            <div class="timeline-content">
+                                <strong>茵斯布魯克舊城區</strong>
+                                <p>黃金屋頂（Herzog-Friedrich-Str. 15）→ 茵河彩色屋<br>16:30 起 blue hour，河面倒影＋Nordkette 山脈背景</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photo gallery -->
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://www.kitzsteinhorn.at/bilder/kitzsteinhorn/top-of-salzburg/nationalpark-gallery/plattform/sommer/4173/image-thumb__4173__lightbox/2020_Nationalpark_Gallery_Sommer.d52bf2f2.jpg" alt="Kitzsteinhorn TOP OF SALZBURG">
+                            <span class="gallery-caption">TOP OF SALZBURG 冰川全景</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://cdn.getyourguide.com/img/location/5c9e3100e8243.jpeg/68.jpg" alt="Zell am See lake">
+                            <span class="gallery-caption">Zell am See 湖景</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://www.bring-you.info/imgs/2021/03/Innsbruck.jpg" alt="Innsbruck city view">
+                            <span class="gallery-caption">茵斯布魯克彩色屋</span>
+                        </div>
+                    </div>
+
+                    <!-- MVP highlight -->
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">📸</div>
+                        <div class="mvp-text">
+                            <strong>今日代表照</strong>
+                            <p>TOP OF SALZBURG Panorama Platform 冰川全景｜茵斯布魯克 Innbrucke 橋上彩色屋 blue hour</p>
+                        </div>
+                    </div>
+
+                    <!-- Info cards -->
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">約 2h50（分段）</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏔️</div>
+                            <div class="info-label">最高點</div>
+                            <div class="info-value">3,029m</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🌅</div>
+                            <div class="info-label">日落</div>
+                            <div class="info-value">~16:40</div>
+                        </div>
+                    </div>
+
+                    <!-- Warnings -->
+                    <div class="warning-box">
+                        <span class="warning-icon">⚠️</span>
+                        <span>出發前確認：① Kitzsteinhorn 纜車首班時間 ② Berggasthof Mitterberg 是否營業（+43 6542 72493）。山頂 3,000m 氣溫約 -5°C～-10°C，穿羽絨＋手套。</span>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="cta-link" style="margin-top: 10px;">
+                        <a href="https://www.kitzsteinhorn.at/en" target="_blank">
+                            🔗 Kitzsteinhorn 官網 — 確認纜車時刻
+                        </a>
+                    </div>
+
+                    <!-- Accommodation options -->
+                    <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                        <strong style="color: #6a1b9a;">🏠 茵斯布魯克住宿選擇（11/6，1 晚）</strong>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/vebnhxd2" target="_blank">The Penz Hotel</a></li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/1nt5u48i" target="_blank">STAGE12 Hotel</a></li>
+                            <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/tvljcimd" target="_blank">aDLERS Hotel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="tab-content t8" id="day8">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://www.leo-travel.idv.tw/wp-content/uploads/czech-cesky-krumlov-castle-guide-DSC_0501.webp" alt="Cesky Krumlov panorama" style="object-position: center 65%;">
+                    <div class="hero-overlay">
+                        <h2>Day 8｜11/7（六）</h2>
+                        <p>CK 小鎮（庫倫洛夫）— 路線二擇一</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">CK 住宿</div>
+
+                    <!-- Route Option A -->
+                    <div style="margin-bottom: 25px; padding: 18px; background: #e3f2fd; border-radius: 10px; border-left: 4px solid #1976d2;">
+                        <strong style="color: #1565c0; font-size: 1.05em;">選項 A｜經 Linz（總車程約 4h35）</strong>
+                        <p style="margin-top: 8px; font-size: 0.9em; color: #555;">茵斯布魯克 → Kitzbühel（1h10）→ Linz 午餐（2h25）→ CK（1h）</p>
+                        <div class="timeline" style="margin-top: 15px;">
+                            <div class="timeline-item">
+                                <div class="timeline-time">08:00</div>
+                                <div class="timeline-content">
+                                    <strong>茵斯布魯克出發</strong>
+                                    <p>走 A12 高速東行</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">09:10</div>
+                                <div class="timeline-content">
+                                    <strong>Kitzbühel 快停 </strong>
+                                    <p>阿爾卑斯滑雪名鎮，老街散步 20 分鐘</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">11:45</div>
+                                <div class="timeline-content">
+                                    <strong>Linz 午餐休息</strong>
+                                    <p>奧地利第三大城、多瑙河畔，停留 40-60 分鐘</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item highlight">
+                                <div class="timeline-time">13:45</div>
+                                <div class="timeline-content">
+                                    <strong>抵達 CK</strong>
+                                    <p>約 14:00 前到，天光充足</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Route Option B -->
+                    <div style="margin-bottom: 25px; padding: 18px; background: #e8f5e9; border-radius: 10px; border-left: 4px solid #388e3c;">
+                        <strong style="color: #2e7d32; font-size: 1.05em;">選項 B｜經 Passau（總車程約 5h15）</strong>
+                        <p style="margin-top: 8px; font-size: 0.9em; color: #555;">茵斯布魯克 → Kitzbühel（1h10）→ Passau 三河匯流（2h20）→ CK（1h45）</p>
+                        <div class="timeline" style="margin-top: 15px;">
+                            <div class="timeline-item">
+                                <div class="timeline-time">08:00</div>
+                                <div class="timeline-content">
+                                    <strong>茵斯布魯克出發</strong>
+                                    <p>走 A12 高速東行</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">09:10</div>
+                                <div class="timeline-content">
+                                    <strong>Kitzbühel 快停</strong>
+                                    <p>阿爾卑斯滑雪名鎮，老街散步 20 分鐘</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item highlight">
+                                <div class="timeline-time">11:40</div>
+                                <div class="timeline-content">
+                                    <strong>Passau 三河之城</strong>
+                                    <p>多瑙河、因河、伊爾茨河匯流處，三河顏色不同非常壯觀。巴洛克老城散步、歐洲最大教堂管風琴。停留 45-60 分鐘</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">14:30</div>
+                                <div class="timeline-content">
+                                    <strong>抵達 CK</strong>
+                                    <p>約 14:30 到，仍有 1.5-2 小時天光</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CK afternoon (shared) -->
+                    <div style="margin-bottom: 20px; padding: 12px 15px; background: #f5f5f5; border-radius: 8px;">
+                        <strong>抵達 CK 後：</strong>
+                        <p style="margin-top: 6px; font-size: 0.9em;">彩繪塔（登塔俯瞰 S 型河灣全景，趁有光線先上去）→ 舊城區漫步 → 伏爾塔瓦河畔 → CK 夜景（S 型河灣夢幻燈光）</p>
+                    </div>
+
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://andyventure.com/wp-content/uploads/czech/cesky_krumlov_itinerary/20240419_DSC07242.webp" alt="CK painted tower">
+                            <span class="gallery-caption">彩繪塔</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqARXaKOA7R3eLzX2tunmkt3zoZFMiFNa7sQQMQq1pQQ&s=10" alt="CK old town">
+                            <span class="gallery-caption">舊城區</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://www.leo-travel.idv.tw/wp-content/uploads/czech-cesky-krumlov-castle-DSC_8828-750x375.webp" alt="CK night view">
+                            <span class="gallery-caption">CK 夜景</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">4h35 / 5h15</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏰</div>
+                            <div class="info-label">主題</div>
+                            <div class="info-value">中世紀小鎮</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <div class="info-label">國家</div>
+                            <div class="info-value">捷克</div>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <span class="warning-icon">⚠️</span>
+                        <span>本日為全程最長車程，建議 08:00 出發。11 月日落約 16:30，選項 A 約 14:00 到 CK，選項 B 約 14:30 到 CK。</span>
+                    </div>
+
+                    <!-- Accommodation options -->
+                    <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                        <strong style="color: #6a1b9a;">🏠 CK 小鎮住宿選擇（11/7，1 晚）有停車位/無石板路</strong>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/yff0nfyj" target="_blank">Hotel Dvorak</a></li>
+                            <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/eqnswqvu" target="_blank">Vltavská pohádka</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="tab-content t9" id="day9">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://www.sundaytour.com.tw/upfiles/chinese/attractions/tw_attractions_caty1593598449_2.jpg" alt="Prague old town square" style="object-position: center center;">
+                    <div class="hero-overlay">
+                        <h2>Day 9｜11/8（日）</h2>
+                        <p>布拉格老城</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">布拉格住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:00</div>
+                            <div class="timeline-content">
+                                <strong>CK 小鎮出發 → 布拉格</strong>
+                                <p>車程約 2.5 小時</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">12:00</div>
+                            <div class="timeline-content">
+                                <strong>老城廣場</strong>
+                                <p>布拉格最核心的歷史廣場</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:00</div>
+                            <div class="timeline-content">
+                                <strong>天文鐘</strong>
+                                <p>600 年歷史的中世紀天文鐘</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:30</div>
+                            <div class="timeline-content">
+                                <strong>火藥塔</strong>
+                                <p>哥德式城門塔樓</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-content">
+                                <strong>查理大橋夜景 + 老城橋塔登塔</strong>
+                                <p>伏爾塔瓦河上的巴洛克石橋，夜晚最美。登老城橋塔俯瞰整座橋與城堡區經典視角</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5p2PDi3_UrkNREofY2oBJPyNC6XJRS5dlJqfG929E-w&s=10" alt="Prague old town square">
+                            <span class="gallery-caption">老城廣場</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://image.kkday.com/v2/image/get/c_fill%2Cq_55%2Ct_webp%2Cw_960/s1.kkday.com/product_607977/20260619185831_jt20C/jpg" alt="Prague astronomical clock">
+                            <span class="gallery-caption">天文鐘</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://hojenjen.com/wp-content/uploads/20200131234156_40.jpg" alt="Charles Bridge at night">
+                            <span class="gallery-caption">查理大橋夜景</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">約 2h30</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏰</div>
+                            <div class="info-label">主題</div>
+                            <div class="info-value">百塔之城</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🌉</div>
+                            <div class="info-label">必看</div>
+                            <div class="info-value">查理大橋</div>
+                        </div>
+                    </div>
+
+                    <!-- Accommodation options -->
+                    <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                        <strong style="color: #6a1b9a;">🏠 布拉格住宿選擇（11/8-11/10，2 晚）有停車位/無石板路</strong>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/ye3na80g" target="_blank">Michelangelo Grand Hotel Prague</a></li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/wd0s6xx4" target="_blank">Grandium Hotel Prague</a></li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/t9u71mv6" target="_blank">MOODs Charles Bridge Hotel</a></li>
+                            <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/u2lk2xjm" target="_blank">Unitas Hotel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 10 -->
+        <div class="tab-content t10" id="day10">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://andyventure.com/wp-content/uploads/2025/12/czech_prague_castle_20240418_DSC06726.webp" alt="Prague Castle" style="object-position: center 45%;">
+                    <div class="hero-overlay">
+                        <h2>Day 10｜11/9（一）</h2>
+                        <p>布拉格城堡</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">布拉格住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">09:00</div>
+                            <div class="timeline-content">
+                                <strong>布拉格城堡</strong>
+                                <p>世界最大古堡群之一</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">10:00</div>
+                            <div class="timeline-content">
+                                <strong>聖維特主教座堂</strong>
+                                <p>哥德式大教堂，彩繪玻璃窗</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:30</div>
+                            <div class="timeline-content">
+                                <strong>黃金巷</strong>
+                                <p>彩色小屋巷弄，卡夫卡故居</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:30</div>
+                            <div class="timeline-content">
+                                <strong>小城區</strong>
+                                <p>巴洛克風格街區漫步</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:00</div>
+                            <div class="timeline-content">
+                                <strong>約翰藍儂牆</strong>
+                                <p>彩繪塗鴉藝術牆</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:30</div>
+                            <div class="timeline-content">
+                                <strong>伏爾塔瓦河畔散步</strong>
+                                <p>河畔悠閒漫步，看天鵝</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTWEbhk2TEcPdbA__W9_A5lQxOlK1ZZiznn_SOqUU_Wg&s=10" alt="St Vitus Cathedral">
+                            <span class="gallery-caption">聖維特主教座堂</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i0.wp.com/thecreativeadventurer.com/wp-content/uploads/2020/01/TheTopTenThingstoSeeonaWalkingTourofPrague27sGoldenLane5.jpg?fit=1500%2C1000&ssl=1" alt="Golden Lane">
+                            <span class="gallery-caption">黃金巷</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://hojenjen.com/wp-content/uploads/20200124000745_85.jpg" alt="John Lennon Wall">
+                            <span class="gallery-caption">約翰藍儂牆</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚶</div>
+                            <div class="info-label">交通</div>
+                            <div class="info-value">步行日</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏰</div>
+                            <div class="info-label">主題</div>
+                            <div class="info-value">城堡區</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">⛪</div>
+                            <div class="info-label">必看</div>
+                            <div class="info-value">聖維特教堂</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 11 -->
+        <div class="tab-content t11" id="day11">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_60/Mobile/City/vfg4baggrck0egh36owk.jpg" alt="Vienna cityscape" style="object-position: center 70%;">
+                    <div class="hero-overlay">
+                        <h2>Day 11｜11/10（二）</h2>
+                        <p>返回維也納</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">維也納住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">08:00</div>
+                            <div class="timeline-content">
+                                <strong>布拉格出發 → 維也納</strong>
+                                <p>車程約 4 小時，抵達後建議還車</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:00</div>
+                            <div class="timeline-content">
+                                <strong>霍夫堡周邊</strong>
+                                <p>哈布斯堡皇宮，帝國歷史核心</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:30</div>
+                            <div class="timeline-content">
+                                <strong>格拉本大道</strong>
+                                <p>維也納最繁華的購物街</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">15:30</div>
+                            <div class="timeline-content">
+                                <strong>聖史蒂芬大教堂</strong>
+                                <p>維也納地標，哥德式尖塔</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">18:00</div>
+                            <div class="timeline-content">
+                                <strong>市中心晚餐</strong>
+                                <p>維也納炸豬排或紅酒燉牛肉</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7isrgLoktFhVZgXsBFnFKoFlnIQWGJnwk8nwmnSCc6g&s=10" alt="Hofburg Palace">
+                            <span class="gallery-caption">霍夫堡皇宮</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://www.wilhelmchang.com/wp-content/uploads/2019/03/WCP-5822.jpg" alt="St Stephen Cathedral">
+                            <span class="gallery-caption">聖史蒂芬大教堂</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHm6ZL5HJJqXs3Q1AmjLwrU8aXnyj5npa8gLYkfsyHrg&s=10" alt="Graben street">
+                            <span class="gallery-caption">格拉本大道</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚗</div>
+                            <div class="info-label">車程</div>
+                            <div class="info-value">約 4h</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🔑</div>
+                            <div class="info-label">還車</div>
+                            <div class="info-value">建議今天</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🏛️</div>
+                            <div class="info-label">主題</div>
+                            <div class="info-value">帝國之都</div>
+                        </div>
+                    </div>
+
+                    <!-- Accommodation options -->
+                    <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
+                        <strong style="color: #6a1b9a;">🏠 維也納住宿選擇（11/10-11/12，2 晚）瑪利亞希爾夫大街</strong>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/vm4bkvhe" target="_blank">Doubletree by Hilton Vienna Schonbrunn</a></li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/90ml0r1o" target="_blank">Ruby Marie Hotel Vienna by IHG</a></li>
+                            <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/9jv20r4g" target="_blank">Renaissance Vienna Schonbrunn Hotel</a></li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 12px; padding: 15px; background: #e8eaf6; border-radius: 10px; border-left: 4px solid #5c6bc0;">
+                        <strong style="color: #3949ab;">🏠 維也納住宿選擇（11/10-11/12，2 晚）內城區</strong>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <li style="padding: 6px 0; border-bottom: 1px solid #c5cae9;"><a href="https://hotelsapp.onelink.me/fSyN/zew1ccg1" target="_blank">Hotel Rathauspark Wien - Handwritten Collection</a></li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #c5cae9;"><a href="https://hotelsapp.onelink.me/fSyN/4wfwuae4" target="_blank">Urban Rooms Rathaus</a></li>
+                            <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/9dnql0b6" target="_blank">Hotel Rathaus Wein & Design</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 12 -->
+        <div class="tab-content t12" id="day12">
+            <div class="day-card day-card-rich">
+                <div class="hero-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ACmzIr94vGUkCYvrYqDLIVycWOxIOE7h3NCNt6g9cQ&s=10" alt="Schonbrunn Palace garden" style="object-position: center center;">
+                    <div class="hero-overlay">
+                        <h2>Day 12｜11/11（三）</h2>
+                        <p>維也納漫遊</p>
+                    </div>
+                </div>
+                <div class="day-body">
+                    <div class="accommodation-badge">維也納住宿</div>
+                    <div class="timeline">
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">09:30</div>
+                            <div class="timeline-content">
+                                <strong>美泉宮花園</strong>
+                                <p>外園免費參觀，巴洛克皇家花園</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:00</div>
+                            <div class="timeline-content">
+                                <strong>咖啡館午茶</strong>
+                                <p>維也納咖啡文化，Sacher 蛋糕</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:00</div>
+                            <div class="timeline-content">
+                                <strong>自由購物</strong>
+                                <p>瑪利亞希爾夫大街或市中心</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-content">
+                                <strong>回飯店整理行李</strong>
+                                <p>明天中午的飛機，今晚好好休息</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-gallery">
+                        <div class="gallery-item">
+                            <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_728/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/dzsnq0c4mfrscoqpgzyl/%E7%B6%AD%E4%B9%9F%E7%B4%8D%E3%80%8C%E7%86%8A%E5%B8%83%E6%9C%97%E5%AE%AE%E3%80%8D%E5%8D%8A%E6%97%A5%E7%A7%81%E4%BA%BA%E5%B0%8E%E8%A6%BD.jpg" alt="Schonbrunn Palace">
+                            <span class="gallery-caption">美泉宮花園</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://www.sundaynews.tw/userfiles/images/viennacafe-23.jpg" alt="Vienna coffee house">
+                            <span class="gallery-caption">維也納咖啡館</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://i0.wp.com/journey.tw/wp-content/uploads/2025/03/20250312230752_0_22a54d.jpg?resize=1100%2C734&quality=99&ssl=1" alt="Vienna shopping street">
+                            <span class="gallery-caption">購物街區</span>
+                        </div>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-icon">🚶</div>
+                            <div class="info-label">交通</div>
+                            <div class="info-value">地鐵+步行</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">☕</div>
+                            <div class="info-label">節奏</div>
+                            <div class="info-value">悠閒慢遊</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon">🧳</div>
+                            <div class="info-label">提醒</div>
+                            <div class="info-value">整理行李</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="tab-content tlnk" id="links">
+            <div class="links-section">
+                <h2>租車</h2>
+                <ul>
+                    <li><a href="https://www.sixt.com/betafunnel/#/offerlist?zen_pu_location=41caad9a-628e-4dd8-bf03-c760a8a7ca14&zen_do_location=edd1df7a-8518-4b56-8721-494054b63cb2&zen_pu_time=2026-11-01T09%3A00&zen_do_time=2026-11-10T14%3A00&zen_pu_title=Vienna-Schwechat%20Airport&zen_do_title=Vienna%20West%20Train%20Station&zen_offer_matrix_id=a80312dc-21d4-43de-8553-8f968c953952&zen_pu_branch_id=BRANCH%3A882&zen_do_branch_id=BRANCH%3A6235&zen_vehicle_type=car&zen_pickup_country_code=AT&zen_resident_country_required=false&zen_nearby_branches_map_flow=true&zen_point_of_sale=TW&zen_session_id=ea0cb720-9df2-4c7a-b556-f15bfaf26f20&zen_filters=%7B%22group_type%22%3A%5B%5D%2C%22special_rentals%22%3A%5B%5D%2C%22features%22%3A%5B%5D%2C%22passengers_count%22%3A%5B%5D%2C%22bags_count%22%3A%5B%5D%2C%22minimum_driver_age%22%3A%5B%5D%7D&zen_order_is_ascending=false&zen_order_by=&zen_offer_id=PFAV-882-6235&zen_booking_id=fd0bea63-76f9-45f5-86b4-662165054cab" target="_blank">Sixt 租車（維也納機場取車 → 維也納西站還車，11/1-11/10）</a></li>
+                    <li><a href="https://www.hertz.co.uk/rentacar/reservation/?id=42333&LinkType=HZLK#vehicles" target="_blank">Hertz 租車</a></li>
+                    <li><a href="https://cars.booking.com/search-results?aid=304142&coordinates=48.120902%2C16.56421&cor=tw&doDay=10&doHour=14&doMinute=0&doMonth=11&doYear=2026&driversAge=30&dropCoordinates=48.196964263916016%2C16.33909797668457&dropFtsType=L&dropLocation=&dropLocationName=Wien+Westbahnhof+Railway+Station&ftsType=A&label=gen173nr-10EgljYXJzX2NpdHkoDjjKAkgJWARo5wGIAQGYATO4ARfIAQ_YAQPoAQH4AQGIAgGoAgG4AtKJ3NMGwAIB0gIkOGI5N2M3YjMtNTY2ZC00NWRkLTgyZTctZDNjYmY2MGExZGIy2AIB4AIB&location=-1&locationIata=&locationName=Vienna+International+Airport&lpPreviewPricing=moreCars&prefcurrency=TWD&preflang=en&puDay=1&puHour=9&puMinute=0&puMonth=11&puYear=2026&filterCriteria_suitcaseCount=4" target="_blank">Booking.com 租車（維也納機場取車 → 維也納西站還車，11/1-11/10）</a></li>
+                    <li><a href="https://www.rentalcars.com/search-results?intent=direct&location=&dropLocation=&locationName=Vienna+International+Airport&locationIata=VIE&dropLocationName=Vienna&coordinates=48.119998931884766%2C16.560800552368164&dropCoordinates=48.20859909057617%2C16.373491287231445&driversAge=30&puDay=1&puMonth=11&puYear=2026&puMinute=0&puHour=9&doDay=10&doMonth=11&doYear=2026&doMinute=0&doHour=14&ftsType=A&dropFtsType=C&filterCriteria_carCategory=suvs&filterCriteria_carCategory=large&filterCriteria_transmission=AUTOMATIC" target="_blank">Rentalcars.com（維也納機場取車 → 維也納還車，11/1-11/10，SUV/大型自排）</a></li>
+                </ul>
+
+                <h2>景點官方網站（建議出發前一個月再次確認）</h2>
+                <ul>
+                    <li><a href="https://www.dachstein.at/en/summer/cable-cars/gosaukammbahn" target="_blank">Gosaukamm Cable Car</a></li>
+                    <li><a href="https://www.salzwelten.at/en/hallstatt/prices-opening-hours" target="_blank">Hallstatt Skywalk (纜車）</a></li>
+                    <li><a href="https://www.seenschifffahrt.de/en/koenigssee" target="_blank">Konigssee Schifffahrt (國王湖遊船）</a></li>
+                    <li><a href="https://www.salzbergwerk.de/en/ticketshop/select" target="_blank">Berchtesgaden Salt Mile(鹽礦區導覽購票)</a></li>
+                    <li><a href="https://www.5schaetze.at/de/wolfgangseeschifffahrt.html" target="_blank">Wolfgangsee Schifffahrt（沃夫岡湖遊船）</a></li>
+                    <li><a href="https://www.festung-hohensalzburg.at/en/" target="_blank">Hohensalzburg Fortress（薩爾斯堡城堡）</a></li>
+                    <li><a href="https://nordkette.com/en/" target="_blank">Nordkette Innsbruck（因斯布魯克北山纜車）</a></li>
+                    <li><a href="https://www.hrad.cz/en" target="_blank">Prague Castle（布拉格城堡）</a></li>
+                    <li><a href="https://www.schoenbrunn.at/en/" target="_blank">Schonbrunn Palace（美泉宮）</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
