@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 奧地利 (10/31-11/12)</title>
@@ -96,6 +97,22 @@
 
         .tab-nav label.lnk:hover { background: #c8e6c9; }
 
+        .tab-nav label.food {
+            background: #fff3e0;
+            color: #e65100;
+            border: 1px solid #ffcc80;
+        }
+
+        .tab-nav label.food:hover { background: #ffe0b2; }
+
+        .tab-nav label.wine {
+            background: #f3e5f5;
+            color: #6a1b9a;
+            border: 1px solid #ce93d8;
+        }
+
+        .tab-nav label.wine:hover { background: #e1bee7; }
+
         /* Tab content */
         .tab-content { display: none; }
 
@@ -130,6 +147,18 @@
             font-weight: bold;
         }
 
+        #dfood:checked ~ .tab-nav label[for="dfood"] {
+            background: #e65100;
+            color: white;
+            font-weight: bold;
+        }
+
+        #ddine:checked ~ .tab-nav label[for="ddine"] {
+            background: #6a1b9a;
+            color: white;
+            font-weight: bold;
+        }
+
         #d2:checked ~ .tab-content.t2,
         #d3:checked ~ .tab-content.t3,
         #d4:checked ~ .tab-content.t4,
@@ -141,7 +170,9 @@
         #d10:checked ~ .tab-content.t10,
         #d11:checked ~ .tab-content.t11,
         #d12:checked ~ .tab-content.t12,
-        #dlnk:checked ~ .tab-content.tlnk { display: block; }
+        #dlnk:checked ~ .tab-content.tlnk,
+        #dfood:checked ~ .tab-content.tfood,
+        #ddine:checked ~ .tab-content.tdine { display: block; }
 
         .tab-content.active {
             display: block;
@@ -396,12 +427,25 @@
             color: #666;
         }
 
+        /* Optional itinerary items are rendered in gray */
+        .opt {
+            color: #999;
+        }
+
+        .opt a {
+            color: #999;
+        }
+
         /* Photo gallery */
         .photo-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-bottom: 20px;
+        }
+
+        .photo-gallery.two-col {
+            grid-template-columns: repeat(2, 1fr);
         }
 
         .gallery-item {
@@ -589,7 +633,8 @@
                 height: 200px;
             }
 
-            .photo-gallery {
+            .photo-gallery,
+            .photo-gallery.two-col {
                 grid-template-columns: 1fr;
             }
 
@@ -619,7 +664,7 @@
         </div>
 
         <!-- Tab Navigation -->
-        <input type="radio" name="dtab" id="d2" checked>
+        <input type="radio" name="dtab" id="d2" checked="">
         <input type="radio" name="dtab" id="d3">
         <input type="radio" name="dtab" id="d4">
         <input type="radio" name="dtab" id="d5">
@@ -631,6 +676,8 @@
         <input type="radio" name="dtab" id="d11">
         <input type="radio" name="dtab" id="d12">
         <input type="radio" name="dtab" id="dlnk">
+        <input type="radio" name="dtab" id="dfood">
+        <input type="radio" name="dtab" id="ddine">
 
         <div class="tab-nav">
             <label for="d2" class="grp-lake">Day 2</label>
@@ -645,6 +692,8 @@
             <label for="d11" class="grp-wien">Day 11</label>
             <label for="d12" class="grp-wien">Day 12</label>
             <label for="dlnk" class="lnk">官網連結</label>
+            <label for="dfood" class="food">午餐美食</label>
+            <label for="ddine" class="wine">晚餐與酒</label>
         </div>
 
         <!-- Day 2 -->
@@ -655,7 +704,7 @@
                     <img src="https://www.thetravelbuglife.com/wp-content/uploads/2023/04/reflection-gosausee.jpg" alt="Gosausee Dachstein reflection" style="object-position: center 55%;">
                     <div class="hero-overlay">
                         <h2>Day 2｜11/1（日）</h2>
-                        <p>Gosau 纜車 → 戈紹湖 → 聖沃夫岡夕陽</p>
+                        <p>Gosau 纜車 → 戈紹湖</p>
                     </div>
                 </div>
 
@@ -688,27 +737,27 @@
                         <div class="timeline-item">
                             <div class="timeline-time">15:30</div>
                             <div class="timeline-content">
-                                <strong>下山 → 戈紹湖</strong>
-                                <p>欣賞 Dachstein 群山在 Gosausee 湖面的完美倒影</p>
+                                <strong>📸 下山 → 戈紹湖</strong>
+                                <p>欣賞 Dachstein 群山在 Gosausee 湖面的完美倒影。纜車下山開幾分鐘就到，零繞路。⚠️ 倒影需要無風＋晴天，11 月午後常起風，拍不到也別失望</p>
                             </div>
                         </div>
-                        <div class="timeline-item highlight">
-                            <div class="timeline-time">17:00</div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:30</div>
                             <div class="timeline-content">
-                                <strong>聖沃夫岡湖畔夕陽</strong>
-                                <p>前往 St. Wolfgang 湖畔欣賞黃昏美景</p>
+                                <strong>返回 St. Gilgen 住宿</strong>
+                                <p>車程約 1 小時，17:30 前抵達，避開山區夜路</p>
                             </div>
                         </div>
                     </div>
 <!-- Route navigation -->
                     <div class="cta-link" style="margin-bottom: 15px; text-align: left;">
-                        <a href="https://www.google.com/maps/dir/48.11794,16.56625/47.53375,13.49591/47.53312,13.49671/47.52829,13.50706/47.72016,13.48391/47.71935,13.48163/47.76648,13.36743" target="_blank" style="background: #eaf4fb; color: #2980b9; border: 1px solid #a9cce3;">
-                            🗺️ Day 2 完整路線導航（機場 → Gosau → 聖沃夫岡 → St. Gilgen 住宿）
+                        <a href="https://www.google.com/maps/dir/48.11794,16.56625/47.53375,13.49591/47.53312,13.49671/47.52829,13.50706/47.76648,13.36743" target="_blank" style="background: #eaf4fb; color: #2980b9; border: 1px solid #a9cce3;">
+                            🗺️ Day 2 完整路線導航（機場 → Gosau → St. Gilgen 住宿）
                         </a>
                     </div>
 
                     <!-- Photo spots -->
-                    <div class="photo-gallery">
+                    <div class="photo-gallery two-col">
                         <div class="gallery-item">
                             <img src="https://a.storyblok.com/f/243512/1920x976/d7869d003a/dachsteinwest-gosaukammbahn-header.jpg/m/2400x1518" alt="Gosaukamm Cable Car">
                             <span class="gallery-caption">Gosaukamm Cable Car</span>
@@ -717,18 +766,14 @@
                             <img src="https://ak-d.tripcdn.com/images/1mi3l224x98maxuhp4A24_Q90.jpg?proc=source/trip" alt="Gosausee lake reflection">
                             <span class="gallery-caption">戈紹湖倒影</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="https://mimigo.tw/wp-content/uploads/20250215223526_0_3edc9d.jpg" alt="St Wolfgang sunset">
-                            <span class="gallery-caption">聖沃夫岡黃昏</span>
-                        </div>
                     </div>
 
                     <!-- MVP highlight -->
                     <div class="mvp-highlight">
                         <div class="mvp-icon">📸</div>
                         <div class="mvp-text">
-                            <strong>今日必拍</strong>
-                            <p>戈紹湖 Dachstein 倒影 + 聖沃夫岡湖畔黃昏光線</p>
+                            <strong>經典取景</strong>
+                            <p>戈紹湖 Dachstein 倒影</p>
                         </div>
                     </div>
 
@@ -768,9 +813,9 @@
                     <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
                         <strong style="color: #6a1b9a;">🏠 聖沃夫岡湖區住宿選擇（11/1-11/4，3 晚）</strong>
                         <ul style="list-style: none; padding: 0; margin-top: 10px;">
-                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/24836887?check_in=2026-11-01&check_out=2026-11-04&guests=1&adults=4&s=67&unique_share_id=37e470f1-3fdd-433a-b8ab-c0b789e28055" target="_blank">Abersee 公寓</a></li>
-                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/41439366?check_in=2026-11-01&check_out=2026-11-04&guests=1&adults=4&s=67&unique_share_id=28f82cb8-95fc-4c04-83f7-2412ecf02228" target="_blank">Madlingerhof 度假別墅</a></li>
-                            <li style="padding: 6px 0; background: #e1bee7; border-radius: 4px; padding-left: 8px;"><a href="https://www.airbnb.com.tw/rooms/1122409012319255783?check_in=2026-11-01&check_out=2026-11-04&guests=1&adults=4&s=67&unique_share_id=95428d38-7499-4ad6-9250-6cdbeb66fee1" target="_blank">公寓 Nr.8</a> ✔ 已選</li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/24836887?check_in=2026-11-01&amp;check_out=2026-11-04&amp;guests=1&amp;adults=4&amp;s=67&amp;unique_share_id=37e470f1-3fdd-433a-b8ab-c0b789e28055" target="_blank">Abersee 公寓</a></li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/41439366?check_in=2026-11-01&amp;check_out=2026-11-04&amp;guests=1&amp;adults=4&amp;s=67&amp;unique_share_id=28f82cb8-95fc-4c04-83f7-2412ecf02228" target="_blank">Madlingerhof 度假別墅</a></li>
+                            <li style="padding: 6px 0; background: #e1bee7; border-radius: 4px; padding-left: 8px;"><a href="https://www.airbnb.com.tw/rooms/1122409012319255783?check_in=2026-11-01&amp;check_out=2026-11-04&amp;guests=1&amp;adults=4&amp;s=67&amp;unique_share_id=95428d38-7499-4ad6-9250-6cdbeb66fee1" target="_blank">公寓 Nr.8</a> ✔ 已選</li>
                         </ul>
                     </div>
                 </div>
@@ -781,7 +826,7 @@
         <div class="tab-content t3" id="day3">
             <div class="day-card day-card-rich">
                 <div class="hero-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRABZPfN8462hyoo06080YgGR8H-hOyO8ZqHG3nLHen5L1KFODo6PWkgGI&s=10" alt="Hallstatt lakeside view" style="object-position: center 50%;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRABZPfN8462hyoo06080YgGR8H-hOyO8ZqHG3nLHen5L1KFODo6PWkgGI&amp;s=10" alt="Hallstatt lakeside view" style="object-position: center 50%;">
                     <div class="hero-overlay">
                         <h2>Day 3｜11/2（一）</h2>
                         <p>Hallstatt 一日遊</p>
@@ -807,7 +852,7 @@
                         <div class="timeline-item highlight">
                             <div class="timeline-time">10:00</div>
                             <div class="timeline-content">
-                                <strong>Skywalk 觀景台 + 鹽礦導覽（Optional）</strong>
+                                <strong>Skywalk 觀景台 + <span class="opt">鹽礦導覽（Optional）</span></strong>
                                 <p>搭纜車上山俯瞰湖景，山頂接近 0°C 穿厚外套，鹽礦選擇性，Day6也有鹽礦。</p>
                             </div>
                         </div>
@@ -821,14 +866,14 @@
                         <div class="timeline-item highlight">
                             <div class="timeline-time">15:00</div>
                             <div class="timeline-content">
-                                <strong>Hallstatt 明信片觀景點（黃金微光）</strong>
-                                <p>冬季低角度陽光灑在木屋，最佳拍照時段</p>
+                                <strong>📸 Hallstatt 明信片觀景點（黃金微光）</strong>
+                                <p>冬季低角度陽光灑在木屋，最佳拍照時段。就在鎮上主街往北那段，不用繞路</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-time">16:00</div>
                             <div class="timeline-content">
-                                <strong>市集廣場 + 人骨屋（Optional） + Hallstatt 暮色夜景</strong>
+                                <strong>市集廣場 + <span class="opt">人骨屋（Optional）</span> + Hallstatt 暮色夜景</strong>
                                 <p>逛人骨屋、逛市集廣場，16:45 天黑後路燈亮起，湖面波光粼粼</p>
                             </div>
                         </div>
@@ -860,6 +905,16 @@
                             <span class="gallery-caption">老街與湖畔</span>
                         </div>
                     </div>
+
+                    <!-- MVP highlight -->
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">📸</div>
+                        <div class="mvp-text">
+                            <strong>經典取景</strong>
+                            <p>Hallstatt 明信片觀景點（15:00 黃金微光）</p>
+                        </div>
+                    </div>
+
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-icon">🚗</div>
@@ -951,11 +1006,11 @@
                             <span class="gallery-caption">Bad Ischl 皇家小鎮</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI3wMjBoHoENDIn0_a9g9yGzD_nOaH8cAaMq4yQtnUtnolcf8Bg8-Z1Ghg&s=10" alt="Postalm alpine road">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI3wMjBoHoENDIn0_a9g9yGzD_nOaH8cAaMq4yQtnUtnolcf8Bg8-Z1Ghg&amp;s=10" alt="Postalm alpine road">
                             <span class="gallery-caption">Postalm 山景</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQbTOX74uSyGsyCLTlK97OIUZ_r-Ubm68QU9lgFoLvKZ5oFK5OLXjI9S8&s=10" alt="Mondsee sunset">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQbTOX74uSyGsyCLTlK97OIUZ_r-Ubm68QU9lgFoLvKZ5oFK5OLXjI9S8&amp;s=10" alt="Mondsee sunset">
                             <span class="gallery-caption">Mondsee 黃昏</span>
                         </div>
                     </div>
@@ -988,7 +1043,7 @@
         <div class="tab-content t5" id="day5">
             <div class="day-card day-card-rich">
                 <div class="hero-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9jk3jZU4kh3P42sjSEm4NMg2w0BBrGnt-KqvqPCGR2bP8ZzSMc0l1BWo&s=10" alt="Salzburg old town" style="object-position: center 90%;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9jk3jZU4kh3P42sjSEm4NMg2w0BBrGnt-KqvqPCGR2bP8ZzSMc0l1BWo&amp;s=10" alt="Salzburg old town" style="object-position: center 90%;">
                     <div class="hero-overlay">
                         <h2>Day 5｜11/4（三）</h2>
                         <p>薩爾斯堡老城</p>
@@ -1035,8 +1090,8 @@
                         <div class="timeline-item highlight">
                             <div class="timeline-time">15:30</div>
                             <div class="timeline-content">
-                                <strong>薩爾斯堡城堡要塞夕陽</strong>
-                                <p>搭纜車上城堡，歐洲最大中世紀城堡，俯瞰全城+夕陽（17:00 關門）</p>
+                                <strong>📸 薩爾斯堡城堡要塞夕陽</strong>
+                                <p>搭纜車上城堡，歐洲最大中世紀城堡，俯瞰全城＋夕陽。薩爾斯堡的招牌俯瞰角度。⚠️ 17:00 關門，纜車末班更早，別拖到最後</p>
                             </div>
                         </div>
                         <div class="timeline-item">
@@ -1053,14 +1108,24 @@
                             <span class="gallery-caption">米拉貝爾花園</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhcvQbrUzbOPIv2IlhMsaxOa8EqnwoKxC_Gc_RYm4M7Q&s=10" alt="Getreidegasse">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhcvQbrUzbOPIv2IlhMsaxOa8EqnwoKxC_Gc_RYm4M7Q&amp;s=10" alt="Getreidegasse">
                             <span class="gallery-caption">糧食胡同</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT16t06N5j6N34dywsgboQGUhdQNaDNkV_kbjp1Qco1c2lR4SZUTfmkQ_p09oH7DBnXeVIPaD8NVl7wiiNEo-ZK2Vk&s=19" alt="Hohensalzburg Fortress view">
+                            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT16t06N5j6N34dywsgboQGUhdQNaDNkV_kbjp1Qco1c2lR4SZUTfmkQ_p09oH7DBnXeVIPaD8NVl7wiiNEo-ZK2Vk&amp;s=19" alt="Hohensalzburg Fortress view">
                             <span class="gallery-caption">薩爾斯堡城堡</span>
                         </div>
                     </div>
+
+                    <!-- MVP highlight -->
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">📸</div>
+                        <div class="mvp-text">
+                            <strong>經典取景</strong>
+                            <p>薩爾斯堡要塞俯瞰全城＋夕陽（15:30 上山）— 城市招牌角度，⚠️ 17:00 關門前一定要上去</p>
+                        </div>
+                    </div>
+
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-icon">🚗</div>
@@ -1083,8 +1148,8 @@
                     <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
                         <strong style="color: #6a1b9a;">🏠 薩爾斯堡住宿選擇（11/4-11/6，2 晚）</strong>
                         <ul style="list-style: none; padding: 0; margin-top: 10px;">
-                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/644042441353087517?check_in=2026-11-04&check_out=2026-11-06&guests=1&adults=1&s=67&unique_share_id=d7604ef5-1690-4ec1-981d-d681e661c8b5" target="_blank">Suite1 im Haus Arenberg</a></li>
-                            <li style="padding: 6px 0; background: #e1bee7; border-radius: 4px; padding-left: 8px;"><a href="https://www.airbnb.com.tw/rooms/1090568182235226542?check_in=2026-11-04&check_out=2026-11-06&guests=1&adults=1&s=67&unique_share_id=20a1b350-75cf-4f79-b068-4535be5abc3b" target="_blank">Glan Living 頂層公寓</a> ✔ 已選</li>
+                            <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://www.airbnb.com.tw/rooms/644042441353087517?check_in=2026-11-04&amp;check_out=2026-11-06&amp;guests=1&amp;adults=1&amp;s=67&amp;unique_share_id=d7604ef5-1690-4ec1-981d-d681e661c8b5" target="_blank">Suite1 im Haus Arenberg</a></li>
+                            <li style="padding: 6px 0; background: #e1bee7; border-radius: 4px; padding-left: 8px;"><a href="https://www.airbnb.com.tw/rooms/1090568182235226542?check_in=2026-11-04&amp;check_out=2026-11-06&amp;guests=1&amp;adults=1&amp;s=67&amp;unique_share_id=20a1b350-75cf-4f79-b068-4535be5abc3b" target="_blank">Glan Living 頂層公寓</a> ✔ 已選</li>
                         </ul>
                     </div>
                 </div>
@@ -1105,52 +1170,73 @@
                     <div class="accommodation-badge">薩爾斯堡住宿</div>
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-time">07:15</div>
-                            <div class="timeline-content">
-                                <strong>出發前往國王湖</strong>
-                                <p>趕搭第一班船</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item highlight">
                             <div class="timeline-time">08:00</div>
                             <div class="timeline-content">
-                                <strong>國王湖（Konigssee）第一班船</strong>
-                                <p>翡翠湖水 + 峽谷回音 → St. Bartholoma 紅蔥頭教堂</p>
+                                <strong>薩爾斯堡出發前往國王湖</strong>
+                                <p>車程約 40 分鐘</p>
                             </div>
                         </div>
-                        <div class="timeline-item highlight">
-                            <div class="timeline-time">10:45</div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">08:50</div>
                             <div class="timeline-content">
-                                <strong>Ramsau 明信片教堂</strong>
-                                <p>巴伐利亞最經典的明信片角度</p>
+                                <strong>抵達 Seelände 停車場</strong>
+                                <p>停車場到碼頭步行約 10 分鐘，先買票再排隊</p>
                             </div>
                         </div>
                         <div class="timeline-item highlight">
-                            <div class="timeline-time">11:15</div>
+                            <div class="timeline-time">09:15</div>
+                            <div class="timeline-content">
+                                <strong>國王湖（Konigssee）第一班船</strong>
+                                <p>秋冬班表首班，單程 35 分鐘，09:50 抵 St. Bartholoma</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">09:50</div>
+                            <div class="timeline-content">
+                                <strong>St. Bartholoma 紅蔥頭教堂</strong>
+                                <p>翡翠湖水 + 峽谷回音，停留約 75 分鐘</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:05</div>
+                            <div class="timeline-content">
+                                <strong>搭船返回 Seelände</strong>
+                                <p>11:40 抵岸（上一班 10:35 只能停 45 分鐘，太趕）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">12:00</div>
+                            <div class="timeline-content">
+                                <strong>📸 Ramsau 明信片教堂</strong>
+                                <p>巴伐利亞最經典的明信片角度（車程約 20 分鐘）。全行程繞路 CP 值最高的一站</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">12:35</div>
                             <div class="timeline-content">
                                 <strong>Hintersee 湖畔步道</strong>
                                 <p>趁中午光線好拍湖面倒影</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">12:15</div>
+                            <div class="timeline-time">13:30</div>
                             <div class="timeline-content">
                                 <strong>午餐（Berchtesgaden 鎮上）</strong>
                                 <p>德式料理，為下午鹽礦補充體力</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">13:30</div>
+                            <div class="timeline-time">14:45</div>
                             <div class="timeline-content">
                                 <strong>Berchtesgaden 鹽礦區</strong>
-                                <p>冬季最後入場 15:00，建議 13:30 到（含換裝）。導覽約 1.5hr</p>
+                                <p>11/8 前為夏季時段，最後一團 17:00 出發，時間有緩衝。地底導覽約 1hr，含買票換裝預留 1.5-2hr</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">15:30</div>
+                            <div class="timeline-time">16:45</div>
                             <div class="timeline-content">
                                 <strong>返回薩爾斯堡</strong>
-                                <p>車程約 30 分鐘</p>
+                                <p>車程約 30 分鐘，17:15 前回到住宿</p>
                             </div>
                         </div>
                     </div>
@@ -1169,32 +1255,32 @@
                         </div>
                     </div>
                     <div class="mvp-highlight">
-                        <div class="mvp-icon">🌟</div>
+                        <div class="mvp-icon">📸</div>
                         <div class="mvp-text">
-                            <strong>今日必拍</strong>
-                            <p>Ramsau 明信片角度 + Hintersee 湖面倒影</p>
+                            <strong>經典取景</strong>
+                            <p>Ramsau 明信片角度 ＋ Hintersee 湖面倒影</p>
                         </div>
                     </div>
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-icon">🚗</div>
                             <div class="info-label">車程</div>
-                            <div class="info-value">全天 1h50</div>
+                            <div class="info-value">全天約 2h</div>
                         </div>
                         <div class="info-card">
                             <div class="info-icon">🚢</div>
                             <div class="info-label">遊船</div>
-                            <div class="info-value">搭第一班</div>
+                            <div class="info-value">首班 09:15</div>
                         </div>
                         <div class="info-card">
                             <div class="info-icon">⛏️</div>
                             <div class="info-label">鹽礦</div>
-                            <div class="info-value">導覽 2h</div>
+                            <div class="info-value">末團 17:00</div>
                         </div>
                     </div>
                     <div class="warning-box">
                         <span class="warning-icon">⚠️</span>
-                        <span>國王湖 11 月班次變少，一定要搭第一班。鹽礦冬季（11/4 起）營業 11:00-15:00，最後入場 15:00，務必 13:30 前抵達。</span>
+                        <span>國王湖秋冬班表（10/12-4/23）首班 09:15、末班回程 16:50，其中 09:15 與 16:50 是加班船，只行駛到 11/8。鹽礦同樣 11/8 前為夏季 09:00-17:00（17:00 是最後一團出發時間），11/9 起改冬季 11:00-15:00 — 這趟剛好在換季前，兩邊都用得到較長的時段。訂票時請再確認官網當日實際場次。</span>
                     </div>
                     <div class="cta-link">
                         <a href="https://www.seenschifffahrt.de/en/koenigssee" target="_blank">🔗 國王湖遊船</a>
@@ -1209,10 +1295,10 @@
         <div class="tab-content t7" id="day7">
             <div class="day-card day-card-rich">
                 <div class="hero-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2RjGaJ_zAh7Ozj1Ery6sc5uBzohHjan_nZiUAJ_vTKg2DnIhJ3F2wBoIh&s=10" alt="Kitzsteinhorn glacier panorama">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2RjGaJ_zAh7Ozj1Ery6sc5uBzohHjan_nZiUAJ_vTKg2DnIhJ3F2wBoIh&amp;s=10" alt="Kitzsteinhorn glacier panorama">
                     <div class="hero-overlay">
                         <h2>Day 7｜11/6（五）</h2>
-                        <p>Kitzsteinhorn 冰川 → Zell am See → 茵斯布魯克</p>
+                        <p>Kitzsteinhorn 冰川 → 茵斯布魯克</p>
                     </div>
                 </div>
                 <div class="day-body">
@@ -1231,35 +1317,56 @@
                             <div class="timeline-time">09:30</div>
                             <div class="timeline-content">
                                 <strong>TOP OF SALZBURG（3,029m）</strong>
-                                <p>搭纜車上冰川｜山頂設施：Panorama Platform, National Park Gallery, Cinema 3000</p>
+                                <p>搭纜車上冰川｜山頂設施：Panorama Platform, National Park Gallery, Cinema 3000<br>只留前兩個，捨棄 Cinema 3000，換回午後日光</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">12:00</div>
+                            <div class="timeline-time">11:00</div>
                             <div class="timeline-content">
-                                <strong>下山 → 午餐：Berggasthof Mitterberg</strong>
-                                <p>開車上山 10min<br>俯瞰 Zell am See 湖＋Kitzsteinhorn 午餐<br>若未營業：改在 Zell am See 湖畔餐廳用餐</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item highlight">
-                            <div class="timeline-time">13:30</div>
-                            <div class="timeline-content">
-                                <strong>Zell am See 湖畔 或 Going am Wilder Kaiser </strong>
-                                <p>湖畔步道漫步，雪山映湖經典角度，喝杯咖啡放鬆</p>
+                                <strong>開始下山 → 午餐：Berggasthof Mitterberg</strong>
+                                <p>換兩段纜車約 30-35min，再開車上山 10min，11:50 入座<br>俯瞰 Zell am See 湖＋Kitzsteinhorn 午餐<br>備案：Bergrestaurant Zaglgut（Kaprun 村內，每日 12:00-17:30）</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">14:15</div>
+                            <div class="timeline-time">12:50</div>
                             <div class="timeline-content">
-                                <strong>出發 → 茵斯布魯克</strong>
-                                <p>走 B311 + A12 高速公路，車程約 1h40min</p>
+                                <strong>用完午餐直接出發 → 茵斯布魯克</strong>
+                                <p>走 B311 + A12 高速公路，140km、車程約 2h</p>
                             </div>
                         </div>
-                        <div class="timeline-item highlight">
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:50</div>
+                            <div class="timeline-content">
+                                <strong>抵達茵斯布魯克 — 停車、放行李</strong>
+                                <p>Rathausgalerien 地下停車場（Fallmerayerstraße 1），飯店正下方，€18/天</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:10</div>
+                            <div class="timeline-content">
+                                <strong>舊城區：黃金屋頂 → 城市塔</strong>
+                                <p>黃金屋頂（Herzog-Friedrich-Str. 15）<br>城市塔 133 階登頂約 25min，17:00 關</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
                             <div class="timeline-time">16:00</div>
                             <div class="timeline-content">
-                                <strong>茵斯布魯克舊城區</strong>
-                                <p>黃金屋頂（Herzog-Friedrich-Str. 15）→ 茵河彩色屋<br>16:30 起 blue hour，河面倒影＋Nordkette 山脈背景</p>
+                                <strong>走到茵河邊</strong>
+                                <p>過一座橋 4 分鐘。金色時刻，Nordkette 稜線泛紅</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">16:50</div>
+                            <div class="timeline-content">
+                                <strong>📸 茵河彩色屋 blue hour</strong>
+                                <p>日落 16:52，17:23 全黑</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">18:30</div>
+                            <div class="timeline-content">
+                                <strong>晚餐：Stiftskeller</strong>
+                                <p>Franziskanerplatz，走 3 分鐘。提洛菜＋Augustiner 啤酒</p>
                             </div>
                         </div>
                     </div>
@@ -1272,7 +1379,7 @@
                         </div>
                         <div class="gallery-item">
                             <img src="https://cdn.getyourguide.com/img/location/5c9e3100e8243.jpeg/68.jpg" alt="Zell am See lake">
-                            <span class="gallery-caption">Zell am See 湖景</span>
+                            <span class="gallery-caption">午餐俯瞰 Zell am See</span>
                         </div>
                         <div class="gallery-item">
                             <img src="https://www.bring-you.info/imgs/2021/03/Innsbruck.jpg" alt="Innsbruck city view">
@@ -1284,8 +1391,8 @@
                     <div class="mvp-highlight">
                         <div class="mvp-icon">📸</div>
                         <div class="mvp-text">
-                            <strong>今日代表照</strong>
-                            <p>TOP OF SALZBURG Panorama Platform 冰川全景｜茵斯布魯克 Innbrucke 橋上彩色屋 blue hour</p>
+                            <strong>經典取景</strong>
+                            <p>TOP OF SALZBURG Panorama Platform 冰川全景（09:30，3,029m 主場）＋ 茵斯布魯克 Innbrücke 橋上彩色屋 blue hour（16:50-17:23）</p>
                         </div>
                     </div>
 
@@ -1294,7 +1401,7 @@
                         <div class="info-card">
                             <div class="info-icon">🚗</div>
                             <div class="info-label">車程</div>
-                            <div class="info-value">約 2h50（分段）</div>
+                            <div class="info-value">約 3h25（分段）</div>
                         </div>
                         <div class="info-card">
                             <div class="info-icon">🏔️</div>
@@ -1304,14 +1411,14 @@
                         <div class="info-card">
                             <div class="info-icon">🌅</div>
                             <div class="info-label">日落</div>
-                            <div class="info-value">~16:40</div>
+                            <div class="info-value">~16:52</div>
                         </div>
                     </div>
 
                     <!-- Warnings -->
                     <div class="warning-box">
                         <span class="warning-icon">⚠️</span>
-                        <span>出發前確認：① Kitzsteinhorn 纜車首班時間 ② Berggasthof Mitterberg 是否營業（+43 6542 72493）。山頂 3,000m 氣溫約 -5°C～-10°C，穿羽絨＋手套。</span>
+                        <span>山頂 3,000m 氣溫約 -5°C～-10°C，穿羽絨＋手套。</span>
                     </div>
 
                     <!-- Links -->
@@ -1386,43 +1493,87 @@
                     <!-- Route Option B -->
                     <div style="margin-bottom: 25px; padding: 18px; background: #e8f5e9; border-radius: 10px; border-left: 4px solid #388e3c;">
                         <strong style="color: #2e7d32; font-size: 1.05em;">選項 B｜經 Passau（總車程約 5h15）</strong>
-                        <p style="margin-top: 8px; font-size: 0.9em; color: #555;">茵斯布魯克 → Kitzbühel（1h10）→ Passau 三河匯流（2h20）→ CK（1h45）</p>
+                        <p style="margin-top: 8px; font-size: 0.9em; color: #555;">茵斯布魯克 → Kitzbühel（1h10）→ Passau 三河匯流（2h20）→ CK（1h45）<br><strong>07:00 出發</strong> — 車程比選項 A 多 40 分鐘，晚一小時走的話彩繪塔（55min）趕不上 15:30 關門</p>
                         <div class="timeline" style="margin-top: 15px;">
                             <div class="timeline-item">
-                                <div class="timeline-time">08:00</div>
+                                <div class="timeline-time">07:00</div>
                                 <div class="timeline-content">
                                     <strong>茵斯布魯克出發</strong>
-                                    <p>走 A12 高速東行</p>
+                                    <p>走 A12 高速東行。日出約 07:11，但高速不需要天光</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
-                                <div class="timeline-time">09:10</div>
+                                <div class="timeline-time">08:10</div>
                                 <div class="timeline-content">
                                     <strong>Kitzbühel 快停</strong>
                                     <p>阿爾卑斯滑雪名鎮，老街散步 20 分鐘</p>
                                 </div>
                             </div>
                             <div class="timeline-item highlight">
-                                <div class="timeline-time">11:40</div>
+                                <div class="timeline-time">10:50</div>
                                 <div class="timeline-content">
                                     <strong>Passau 三河之城</strong>
                                     <p>多瑙河、因河、伊爾茨河匯流處，三河顏色不同非常壯觀。巴洛克老城散步、歐洲最大教堂管風琴。停留 45-60 分鐘</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
-                                <div class="timeline-time">14:30</div>
+                                <div class="timeline-time">13:35</div>
                                 <div class="timeline-content">
                                     <strong>抵達 CK</strong>
-                                    <p>約 14:30 到，仍有 1.5-2 小時天光</p>
+                                    <p>Passau 停滿 60 分鐘也是 13:35 到，彩繪塔排得進去</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- CK afternoon (shared) -->
-                    <div style="margin-bottom: 20px; padding: 12px 15px; background: #f5f5f5; border-radius: 8px;">
-                        <strong>抵達 CK 後：</strong>
-                        <p style="margin-top: 6px; font-size: 0.9em;">彩繪塔（登塔俯瞰 S 型河灣全景，趁有光線先上去）→ 舊城區漫步 → 伏爾塔瓦河畔 → CK 夜景（S 型河灣夢幻燈光）</p>
+                    <div style="margin-bottom: 20px; padding: 18px; background: #f5f5f5; border-radius: 8px;">
+                        <strong>抵達 CK 後（兩條路線共用）</strong>
+                        <p style="margin-top: 6px; font-size: 0.88em; color: #666;">硬限制：彩繪塔 15:30 關門、日落 16:35。兩條路線都在 13:35-13:45 抵達，以下時間直接通用<br>城堡內部導覽 Route I／II、巴洛克劇院、城堡花園 11 月全部關閉 — 塔＋博物館是城堡區唯一開放的</p>
+                        <div class="timeline" style="margin-top: 15px;">
+                            <div class="timeline-item">
+                                <div class="timeline-time">13:45</div>
+                                <div class="timeline-content">
+                                    <strong>停車 P1（Jelení zahrada）、放行李</strong>
+                                    <p>城堡北牆下方，離彩繪塔最近，前 40 分鐘免費。舊城禁行車輛，飯店進出方式先問過</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item highlight">
+                                <div class="timeline-time">14:00</div>
+                                <div class="timeline-content">
+                                    <strong>📸 彩繪塔＋城堡博物館</strong>
+                                    <p>登塔俯瞰 S 型河灣全景，只有這裡拍得到<br>官網冬季 11/1-12/20 週二至週日 09:00-15:30，11/7 週六有開 — 先上去</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">15:00</div>
+                                <div class="timeline-content">
+                                    <strong>📸 <a href="https://tourismattractions.net/czech_republic/cloak-bridge-krumlov" target="_blank">披風橋 Cloak Bridge</a></strong>
+                                    <p>俯瞰紅屋頂，下山順路，免費、24hr</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">15:30</div>
+                                <div class="timeline-content">
+                                    <strong>舊城區漫步 → 伏爾塔瓦河畔</strong>
+                                    <p>最後一小時天光</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item highlight">
+                                <div class="timeline-time">16:30</div>
+                                <div class="timeline-content">
+                                    <strong>📸 CK 夜景 blue hour</strong>
+                                    <p>日落 16:35，17:07 全黑。S 型河灣燈光</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-time">18:00</div>
+                                <div class="timeline-content">
+                                    <strong>晚餐：Krčma v Šatlavské ulici</strong>
+                                    <p>Horní 157，中世紀炭火燒烤酒館。11/7 週六務必訂位</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="photo-gallery">
@@ -1431,7 +1582,7 @@
                             <span class="gallery-caption">彩繪塔</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqARXaKOA7R3eLzX2tunmkt3zoZFMiFNa7sQQMQq1pQQ&s=10" alt="CK old town">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqARXaKOA7R3eLzX2tunmkt3zoZFMiFNa7sQQMQq1pQQ&amp;s=10" alt="CK old town">
                             <span class="gallery-caption">舊城區</span>
                         </div>
                         <div class="gallery-item">
@@ -1439,6 +1590,16 @@
                             <span class="gallery-caption">CK 夜景</span>
                         </div>
                     </div>
+
+                    <!-- MVP highlight -->
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">📸</div>
+                        <div class="mvp-text">
+                            <strong>經典取景</strong>
+                            <p>彩繪塔登塔俯瞰 S 型河灣全景 — ⚠️ 15:30 關門｜順路：披風橋俯瞰紅屋頂（免費、24hr）</p>
+                        </div>
+                    </div>
+
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-icon">🚗</div>
@@ -1494,38 +1655,66 @@
                                 <p>車程約 2.5 小時</p>
                             </div>
                         </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:30</div>
+                            <div class="timeline-content">
+                                <strong>抵達布拉格 — 停車、放行李</strong>
+                                <p>住宿自帶停車位、無石板路，車可直接停到住處</p>
+                            </div>
+                        </div>
                         <div class="timeline-item highlight">
                             <div class="timeline-time">12:00</div>
                             <div class="timeline-content">
-                                <strong>老城廣場</strong>
-                                <p>布拉格最核心的歷史廣場</p>
+                                <strong>老城廣場 + <a href="https://commons.wikimedia.org/wiki/File:Prague_-_Old_Town_Square_5.jpg" target="_blank">提恩教堂（Týn Church）</a></strong>
+                                <p>提恩教堂哥德式雙塔是廣場上最醒目的地標</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:30</div>
+                            <div class="timeline-content">
+                                <strong>Celetná 街 → 火藥塔 + <a href="https://www.istockphoto.com/photos/municipal-house-facade-prague" target="_blank">市民會館（Municipal House）</a>（只看外觀）</strong>
+                                <p>Celetná 街直通，單程 400m／5 分鐘，13:00 回廣場接整點<br>兩處都不進去 — 火藥塔跟 15:00 老城橋塔重複，市民會館內部要跟團（320 CZK）</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-time">13:00</div>
                             <div class="timeline-content">
                                 <strong>天文鐘</strong>
-                                <p>600 年歷史的中世紀天文鐘</p>
+                                <p>600 年歷史，整點看使徒遊行</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">14:30</div>
+                            <div class="timeline-time">13:15</div>
                             <div class="timeline-content">
-                                <strong>火藥塔</strong>
-                                <p>哥德式城門塔樓</p>
+                                <strong>午餐：Havelská Koruna</strong>
+                                <p>Havelská 23，自助式 jídelna，每日營業，離老城廣場 250m<br>週日沒有 polední menu，這家最保險</p>
                             </div>
                         </div>
                         <div class="timeline-item highlight">
-                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-time">15:00</div>
                             <div class="timeline-content">
-                                <strong>查理大橋夜景 + 老城橋塔登塔</strong>
-                                <p>伏爾塔瓦河上的巴洛克石橋，夜晚最美。登老城橋塔俯瞰整座橋與城堡區經典視角</p>
+                                <strong>📸 <a href="https://prague.eu/en/objevujte/old-town-bridge-tower-staromestska-mostecka-vez/" target="_blank">老城橋塔登塔（Old Town Bridge Tower）</a></strong>
+                                <p>往下拍查理大橋整條＋布拉格城堡同框，冬季每日 10:00-18:00</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">16:00</div>
+                            <div class="timeline-content">
+                                <strong>📸 <a href="https://www.dreamstime.com/stock-photography-panoramic-view-prague-bridges-over-vltava-river-letn%C3%A1-p-travel-concept-background-elevated-view-bridges-image40193452" target="_blank">萊特納花園（Letná Gardens）</a></strong>
+                                <p>免費俯瞰伏爾塔瓦河 6 座橋全景，日落 16:29，藍調到 17:02 全暗</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">17:30</div>
+                            <div class="timeline-content">
+                                <strong>查理大橋夜景</strong>
+                                <p>天全黑後橋燈全亮</p>
                             </div>
                         </div>
                     </div>
                     <div class="photo-gallery">
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5p2PDi3_UrkNREofY2oBJPyNC6XJRS5dlJqfG929E-w&s=10" alt="Prague old town square">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5p2PDi3_UrkNREofY2oBJPyNC6XJRS5dlJqfG929E-w&amp;s=10" alt="Prague old town square">
                             <span class="gallery-caption">老城廣場</span>
                         </div>
                         <div class="gallery-item">
@@ -1537,6 +1726,16 @@
                             <span class="gallery-caption">查理大橋夜景</span>
                         </div>
                     </div>
+
+                    <!-- MVP highlight -->
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">📸</div>
+                        <div class="mvp-text">
+                            <strong>經典取景</strong>
+                            <p>老城橋塔俯瞰查理大橋＋城堡同框（15:00-16:00）｜萊特納花園 6 座橋全景（16:30-17:02 藍調）— 陰天直接砍</p>
+                        </div>
+                    </div>
+
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-icon">🚗</div>
@@ -1559,7 +1758,7 @@
                     <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
                         <strong style="color: #6a1b9a;">🏠 布拉格住宿選擇（11/8-11/10，2 晚）有停車位/無石板路</strong>
                         <ul style="list-style: none; padding: 0; margin-top: 10px;">
-                            <li style="padding: 6px 0; background: #e1bee7; border-radius: 4px; padding-left: 8px;"><a href="https://www.airbnb.com.tw/rooms/39999232?check_in=2026-11-08&check_out=2026-11-10&guests=1&adults=1&s=67&unique_share_id=94ee62e8-c959-407d-b837-254c715dd1f4" target="_blank">Airbnb 公寓</a> ✔ 已選</li>
+                            <li style="padding: 6px 0; background: #e1bee7; border-radius: 4px; padding-left: 8px;"><a href="https://www.airbnb.com.tw/rooms/39999232?check_in=2026-11-08&amp;check_out=2026-11-10&amp;guests=1&amp;adults=1&amp;s=67&amp;unique_share_id=94ee62e8-c959-407d-b837-254c715dd1f4" target="_blank">Airbnb 公寓</a> ✔ 已選</li>
                             <li style="padding: 6px 0; border-bottom: 1px solid #e1bee7;"><a href="https://hotelsapp.onelink.me/fSyN/t9u71mv6" target="_blank">MOODs Charles Bridge Hotel</a></li>
                             <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/u2lk2xjm" target="_blank">Unitas Hotel</a></li>
                         </ul>
@@ -1581,56 +1780,84 @@
                 <div class="day-body">
                     <div class="accommodation-badge">布拉格住宿</div>
                     <div class="timeline">
-                        <div class="timeline-item highlight">
+                        <div class="timeline-item">
                             <div class="timeline-time">09:00</div>
                             <div class="timeline-content">
-                                <strong>布拉格城堡</strong>
-                                <p>世界最大古堡群之一</p>
+                                <strong><a href="https://prague.eu/en/objevujte/prague-castle-prazsky-hrad/" target="_blank">布拉格城堡</a> — 第二／第三庭院售票處</strong>
+                                <p>冬季 11-3 月建築 09:00-16:00、園區 06:00-22:00<br>450 CZK 含聖維特＋舊皇宮＋聖喬治＋黃金巷，票效 2 天</p>
                             </div>
                         </div>
                         <div class="timeline-item highlight">
-                            <div class="timeline-time">10:00</div>
+                            <div class="timeline-time">09:15</div>
                             <div class="timeline-content">
-                                <strong>聖維特主教座堂</strong>
-                                <p>哥德式大教堂，彩繪玻璃窗</p>
+                                <strong>📸 聖維特主教座堂</strong>
+                                <p>慕夏彩繪玻璃在北側廊。開門即進，人最少 — 11/9 週一 09:00開</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">11:30</div>
+                            <div class="timeline-time">10:45</div>
+                            <div class="timeline-content">
+                                <strong>舊皇宮 + 聖喬治教堂</strong>
+                                <p>Vladislav Hall 無柱拱頂大廳；聖喬治是城堡內最古老的教堂。450 CZK 票已含<br>兩棟排 1 小時，到 11:45</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:50</div>
+                            <div class="timeline-content">
+                                <strong>第一庭院 — 正午衛兵交接（含軍樂與軍旗）</strong>
+                                <p>免費。只有正午這一場帶軍樂和軍旗，比每小時那種盛大。儀式約 15 分鐘，11:50 先卡位</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:20</div>
                             <div class="timeline-content">
                                 <strong>黃金巷</strong>
-                                <p>彩色小屋巷弄，卡夫卡故居</p>
+                                <p>彩色小屋巷弄，卡夫卡故居。從第一庭院走回約 350m</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">12:50</div>
+                            <div class="timeline-content">
+                                <strong>涅魯達街（Nerudova）下坡 → 小城廣場</strong>
+                                <p>從城堡西側 Hradčanské 廣場一路往下，全程下坡 450m。兩側是門牌編號前的「家徽」老招牌</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-time">13:30</div>
                             <div class="timeline-content">
-                                <strong>小城區</strong>
-                                <p>巴洛克風格街區漫步</p>
+                                <strong>午餐：<a href="https://prague.eu/en/objevujte/lokal-u-bile-kuzelky/" target="_blank">Lokál U Bílé kuželky</a></strong>
+                                <p>Míšeňská 12（小城區），週一到六 11:00-24:00，離查理大橋 200m<br>週一有 polední menu（約 €5-8）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:30</div>
+                            <div class="timeline-content">
+                                <strong>約翰藍儂牆</strong>
+                                <p>彩繪塗鴉藝術牆，Velkopřevorské náměstí。離午餐 300m</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-time">15:00</div>
                             <div class="timeline-content">
-                                <strong>約翰藍儂牆</strong>
-                                <p>彩繪塗鴉藝術牆</p>
+                                <strong>伏爾塔瓦河畔散步 → <a href="https://prague.eu/en/objevujte/dancing-house-tancici-dum/" target="_blank">跳舞的房子（Dancing House）</a></strong>
+                                <p>河畔漫步看天鵝，1.8km／約 25 分鐘。Gehry 與 Milunić 合作設計，日落 16:28</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">16:30</div>
+                            <div class="timeline-time">16:00</div>
                             <div class="timeline-content">
-                                <strong>伏爾塔瓦河畔散步</strong>
-                                <p>河畔悠閒漫步，看天鵝</p>
+                                <strong><a href="https://prague.eu/en/objevujte/u-zlateho-tygra-beerhall/" target="_blank">U Zlatého tygra</a> 喝一杯</strong>
+                                <p>Husova 17，未殺菌 Pilsner Urquell。15:00 開、週日休 — 全程只有今天喝得到，17:00 前到</p>
                             </div>
                         </div>
                     </div>
                     <div class="photo-gallery">
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTWEbhk2TEcPdbA__W9_A5lQxOlK1ZZiznn_SOqUU_Wg&s=10" alt="St Vitus Cathedral">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTWEbhk2TEcPdbA__W9_A5lQxOlK1ZZiznn_SOqUU_Wg&amp;s=10" alt="St Vitus Cathedral">
                             <span class="gallery-caption">聖維特主教座堂</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://i0.wp.com/thecreativeadventurer.com/wp-content/uploads/2020/01/TheTopTenThingstoSeeonaWalkingTourofPrague27sGoldenLane5.jpg?fit=1500%2C1000&ssl=1" alt="Golden Lane">
+                            <img src="https://i0.wp.com/thecreativeadventurer.com/wp-content/uploads/2020/01/TheTopTenThingstoSeeonaWalkingTourofPrague27sGoldenLane5.jpg?fit=1500%2C1000&amp;ssl=1" alt="Golden Lane">
                             <span class="gallery-caption">黃金巷</span>
                         </div>
                         <div class="gallery-item">
@@ -1638,6 +1865,16 @@
                             <span class="gallery-caption">約翰藍儂牆</span>
                         </div>
                     </div>
+
+                    <!-- MVP highlight -->
+                    <div class="mvp-highlight">
+                        <div class="mvp-icon">📸</div>
+                        <div class="mvp-text">
+                            <strong>經典取景</strong>
+                            <p>聖維特慕夏之窗（09:15 開門即進，人最少）｜跳舞的房子外觀（15:30 抵達，日落 16:28 前還有近 1 小時）</p>
+                        </div>
+                    </div>
+
                     <div class="info-grid">
                         <div class="info-card">
                             <div class="info-icon">🚶</div>
@@ -1676,41 +1913,68 @@
                             <div class="timeline-time">08:00</div>
                             <div class="timeline-content">
                                 <strong>布拉格出發 → 維也納</strong>
-                                <p>車程約 4 小時，抵達後建議還車</p>
+                                <p>車程約 4 小時，12:00 抵達後開車到住宿放行李</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-time">13:00</div>
                             <div class="timeline-content">
-                                <strong>霍夫堡周邊</strong>
-                                <p>哈布斯堡皇宮，帝國歷史核心</p>
+                                <strong>維也納中央車站還車 ＋ BahnhofCity簡單午餐</strong>
+                                <p>約定還車上限 15:00，還車前先加滿油</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">13:45</div>
+                            <div class="timeline-content">
+                                <strong>步行至<a href="https://www.belvedere.at/en/visit/upper-belvedere" target="_blank">貝爾維德宮</a> — 花園 ＋ 宮殿外觀</strong>
+                                <p>巴洛克花園免費。上宮南側進 → 北面水池取景 → 順坡下中軸線 → 下宮 Rennweg 側門出，D 電車站就在門口<br>option：Upper Belvedere 克林姆《吻》€23、需線上時段票、75 分鐘 — 進去就得放棄大教堂</p>
                             </div>
                         </div>
                         <div class="timeline-item">
+                            <div class="timeline-time">14:20</div>
+                            <div class="timeline-content">
+                                <strong>D 電車 Unteres Belvedere → Schwarzenbergplatz</strong>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
                             <div class="timeline-time">14:30</div>
                             <div class="timeline-content">
-                                <strong>格拉本大道</strong>
-                                <p>維也納最繁華的購物街</p>
+                                <strong><a href="https://www.cafe-schwarzenberg.at/" target="_blank">Café Schwarzenberg</a>（Kärntner Ring 17）</strong>
+                                <p>環城大道最老的咖啡館，1861 年開業。坐 45 分鐘</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">15:15</div>
+                            <div class="timeline-content">
+                                <strong>經國家歌劇院 → Karlsplatz 搭 U1 兩站至 Stephansplatz</strong>
+                                <p>走到 Karlsplatz 會經過歌劇院。Bitzinger Würstelstand Albertina 在歌劇院後方，想吃 Käsekrainer 在這解決</p>
                             </div>
                         </div>
                         <div class="timeline-item highlight">
                             <div class="timeline-time">15:30</div>
                             <div class="timeline-content">
-                                <strong>聖史蒂芬大教堂</strong>
-                                <p>維也納地標，哥德式尖塔</p>
+                                <strong><a href="https://www.stephanskirche.at/" target="_blank">聖史蒂芬大教堂內部</a></strong>
+                                <p>參觀時段 週一至六 09:00-11:30、13:00-16:30，16:30 硬關門，最晚 16:15 進<br>⚠️ 來不及就退回 Day 12 早上 09:00。晚上只進得到後方免費區，逛市集時順便進去看不到中殿</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">18:00</div>
+                            <div class="timeline-time">16:30</div>
                             <div class="timeline-content">
-                                <strong>市中心晚餐</strong>
-                                <p>維也納炸豬排或紅酒燉牛肉</p>
+                                <strong>格拉本大道 → 柯爾市場</strong>
+                                <p><a href="https://www.demel.com/" target="_blank">德梅爾</a>（Kohlmarkt 14，19:00 關）順路外帶蛋糕<br>※ 走到底是米歇爾廣場，霍夫堡外觀含在裡面。克恩頓大街去市集前順走或省略</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">18:30</div>
+                            <div class="timeline-content">
+                                <strong>史蒂芬廣場聖誕市集</strong>（11:00-21:00、免費）
+                                <p>攤位有 Käsekrainer、Punsch、馬鈴薯餅<br>U1 從 Stephansplatz 三站回住宿；BahnhofCity 開到 21:00</p>
                             </div>
                         </div>
                     </div>
                     <div class="photo-gallery">
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7isrgLoktFhVZgXsBFnFKoFlnIQWGJnwk8nwmnSCc6g&s=10" alt="Hofburg Palace">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7isrgLoktFhVZgXsBFnFKoFlnIQWGJnwk8nwmnSCc6g&amp;s=10" alt="Hofburg Palace">
                             <span class="gallery-caption">霍夫堡皇宮</span>
                         </div>
                         <div class="gallery-item">
@@ -1718,7 +1982,7 @@
                             <span class="gallery-caption">聖史蒂芬大教堂</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHm6ZL5HJJqXs3Q1AmjLwrU8aXnyj5npa8gLYkfsyHrg&s=10" alt="Graben street">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHm6ZL5HJJqXs3Q1AmjLwrU8aXnyj5npa8gLYkfsyHrg&amp;s=10" alt="Graben street">
                             <span class="gallery-caption">格拉本大道</span>
                         </div>
                     </div>
@@ -1731,7 +1995,7 @@
                         <div class="info-card">
                             <div class="info-icon">🔑</div>
                             <div class="info-label">還車</div>
-                            <div class="info-value">建議今天</div>
+                            <div class="info-value">13:00 中央車站</div>
                         </div>
                         <div class="info-card">
                             <div class="info-icon">🏛️</div>
@@ -1742,7 +2006,7 @@
 
                     <!-- Accommodation options -->
                     <div style="margin-top: 20px; padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0;">
-                        <strong style="color: #6a1b9a;">🏠 維也納住宿選擇（11/10-11/12，2 晚）貝維德雷宮周邊</strong>
+                        <strong style="color: #6a1b9a;">🏠 維也納住宿選擇（11/10-11/12，2 晚）貝爾維德宮周邊</strong>
                         <ul style="list-style: none; padding: 0; margin-top: 10px;">
                             <li style="padding: 6px 0; background: #e1bee7; border-radius: 4px; padding-left: 8px;"><a href="https://www.agoda.com/adina-apartment-hotel-vienna-belvedere_3/hotel/vienna-at.html" target="_blank">Adina Apartment Hotel Vienna Belvedere</a> ✔ 已選</li>
                         </ul>
@@ -1762,7 +2026,7 @@
                         <ul style="list-style: none; padding: 0; margin-top: 10px;">
                             <li style="padding: 6px 0; border-bottom: 1px solid #c5cae9;"><a href="https://hotelsapp.onelink.me/fSyN/zew1ccg1" target="_blank">Hotel Rathauspark Wien - Handwritten Collection</a></li>
                             <li style="padding: 6px 0; border-bottom: 1px solid #c5cae9;"><a href="https://hotelsapp.onelink.me/fSyN/4wfwuae4" target="_blank">Urban Rooms Rathaus</a></li>
-                            <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/9dnql0b6" target="_blank">Hotel Rathaus Wein & Design</a></li>
+                            <li style="padding: 6px 0;"><a href="https://hotelsapp.onelink.me/fSyN/9dnql0b6" target="_blank">Hotel Rathaus Wein &amp; Design</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1773,7 +2037,7 @@
         <div class="tab-content t12" id="day12">
             <div class="day-card day-card-rich">
                 <div class="hero-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ACmzIr94vGUkCYvrYqDLIVycWOxIOE7h3NCNt6g9cQ&s=10" alt="Schonbrunn Palace garden" style="object-position: center center;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6ACmzIr94vGUkCYvrYqDLIVycWOxIOE7h3NCNt6g9cQ&amp;s=10" alt="Schonbrunn Palace garden" style="object-position: center center;">
                     <div class="hero-overlay">
                         <h2>Day 12｜11/11（三）</h2>
                         <p>維也納漫遊</p>
@@ -1782,32 +2046,60 @@
                 <div class="day-body">
                     <div class="accommodation-badge">維也納住宿</div>
                     <div class="timeline">
-                        <div class="timeline-item highlight">
+                        <div class="timeline-item">
                             <div class="timeline-time">09:30</div>
                             <div class="timeline-content">
-                                <strong>美泉宮花園</strong>
-                                <p>外園免費參觀，巴洛克皇家花園</p>
+                                <strong>18 號電車 → Westbahnhof</strong>
+                                <p>從中央車站直達，約 15 分鐘<br>⚠️ 備案：Day 11 沒趕上大教堂就改 08:45 U1 → Stephansplatz、09:00 進教堂，10:00 轉 U3</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">12:00</div>
+                            <div class="timeline-time">10:00</div>
                             <div class="timeline-content">
-                                <strong>咖啡館午茶</strong>
-                                <p>維也納咖啡文化，Sacher 蛋糕</p>
+                                <strong>瑪利亞希爾夫大街購物</strong>
+                                <p>由西向東約 1.8 公里，週三 19:00 關。店家 09:00-10:00 陸續開<br>東端 Babenbergerstraße 接 Getreidemarkt 往南 550 公尺、8 分鐘到市場北口（分離派會館金色圓頂在路口）</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">11:45</div>
+                            <div class="timeline-content">
+                                <strong><a href="https://www.naschmarkt-vienna.com/naschmarkt-instagram-photography-guide" target="_blank">納許市場（Naschmarkt）午餐</a></strong>
+                                <p>維也納最大露天市集。攤位週三 06:00-21:00<br>Urbanek（Stand 46）站著吃配一杯 Grüner Veltliner，從北口進去先遇到它。空間極小，避開 12:00 尖峰</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">12:30</div>
+                            <div class="timeline-content">
+                                <strong>施佩爾咖啡館（Café Sperl）</strong>
+                                <p>Gumpendorfer Straße 11，從市場往西北 400 公尺、5 分鐘。1880 年原始內裝、撞球檯，全市保存最完整的老咖啡館之一。週三 07:00-23:00<br>※ 午餐已在市場解決，這站只喝咖啡配 Sperl-Torte</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">14:00</div>
+                            <div class="timeline-time">13:45</div>
                             <div class="timeline-content">
-                                <strong>自由購物</strong>
-                                <p>瑪利亞希爾夫大街或市中心</p>
+                                <strong>步行至 U4 Kettenbrückengasse → Schönbrunn</strong>
+                                <p>沿 Gumpendorfer Straße 往西南 800 公尺、10 分鐘；車程約 8 分鐘，站到宮殿入口再 5-7 分鐘。14:15 前後到，14:30 定時票有緩衝</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">14:30</div>
+                            <div class="timeline-content">
+                                <strong><a href="https://www.schoenbrunn.at/en" target="_blank">美泉宮</a> Grand Tour → 花園走上 Gloriette 山丘</strong>
+                                <p>Grand Tour 約 75 分鐘、定時入場需先訂票。11 月 17:00 關、最後入場 16:15。皇宮公園全年免費（冬季 17:30 關園），上坡單程 20-25 分鐘<br>📸 「宮殿＋花園中軸線全景」走上山丘就看得到，不需平台票。日落 16:23，低角度金光最好看<br>⚠️ 花園加值四項 11/2 季末全關，不用買 Exclusive Gardens 聯票</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">16:50</div>
+                            <div class="timeline-content">
+                                <strong><a href="https://www.weihnachtsmarkt-schoenbrunn.at/" target="_blank">美泉宮聖誕市集</a></strong>（Ehrenhof 前庭）
+                                <p>95 攤以上、免費入場、每天 10:00-21:00。這時候燈已亮、宮殿也打光了</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-time">17:00</div>
+                            <div class="timeline-time">18:30</div>
                             <div class="timeline-content">
-                                <strong>回飯店整理行李</strong>
-                                <p>明天中午的飛機，今晚好好休息</p>
+                                <strong>U4 → 回住宿</strong>
+                                <p>車程約 25 分鐘。BahnhofCity 開到 21:00<br>⚠️ 11/11 聖馬丁節，Sturm 傳統上這天收攤，超市看到就買</p>
                             </div>
                         </div>
                     </div>
@@ -1821,7 +2113,7 @@
                             <span class="gallery-caption">維也納咖啡館</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="https://i0.wp.com/journey.tw/wp-content/uploads/2025/03/20250312230752_0_22a54d.jpg?resize=1100%2C734&quality=99&ssl=1" alt="Vienna shopping street">
+                            <img src="https://i0.wp.com/journey.tw/wp-content/uploads/2025/03/20250312230752_0_22a54d.jpg?resize=1100%2C734&amp;quality=99&amp;ssl=1" alt="Vienna shopping street">
                             <span class="gallery-caption">購物街區</span>
                         </div>
                     </div>
@@ -1849,20 +2141,12 @@
         <!-- Links -->
         <div class="tab-content tlnk" id="links">
             <div class="links-section">
-                <h2>租車</h2>
-                <ul>
-                    <li><a href="https://www.sixt.com/betafunnel/#/offerlist?zen_pu_location=41caad9a-628e-4dd8-bf03-c760a8a7ca14&zen_do_location=edd1df7a-8518-4b56-8721-494054b63cb2&zen_pu_time=2026-11-01T09%3A00&zen_do_time=2026-11-10T14%3A00&zen_pu_title=Vienna-Schwechat%20Airport&zen_do_title=Vienna%20West%20Train%20Station&zen_offer_matrix_id=a80312dc-21d4-43de-8553-8f968c953952&zen_pu_branch_id=BRANCH%3A882&zen_do_branch_id=BRANCH%3A6235&zen_vehicle_type=car&zen_pickup_country_code=AT&zen_resident_country_required=false&zen_nearby_branches_map_flow=true&zen_point_of_sale=TW&zen_session_id=ea0cb720-9df2-4c7a-b556-f15bfaf26f20&zen_filters=%7B%22group_type%22%3A%5B%5D%2C%22special_rentals%22%3A%5B%5D%2C%22features%22%3A%5B%5D%2C%22passengers_count%22%3A%5B%5D%2C%22bags_count%22%3A%5B%5D%2C%22minimum_driver_age%22%3A%5B%5D%7D&zen_order_is_ascending=false&zen_order_by=&zen_offer_id=PFAV-882-6235&zen_booking_id=fd0bea63-76f9-45f5-86b4-662165054cab" target="_blank">Sixt 租車（維也納機場取車 → 維也納西站還車，11/1-11/10）</a></li>
-                    <li><a href="https://www.hertz.co.uk/rentacar/reservation/?id=42333&LinkType=HZLK#vehicles" target="_blank">Hertz 租車</a></li>
-                    <li><a href="https://cars.booking.com/search-results?aid=304142&coordinates=48.120902%2C16.56421&cor=tw&doDay=10&doHour=14&doMinute=0&doMonth=11&doYear=2026&driversAge=30&dropCoordinates=48.196964263916016%2C16.33909797668457&dropFtsType=L&dropLocation=&dropLocationName=Wien+Westbahnhof+Railway+Station&ftsType=A&label=gen173nr-10EgljYXJzX2NpdHkoDjjKAkgJWARo5wGIAQGYATO4ARfIAQ_YAQPoAQH4AQGIAgGoAgG4AtKJ3NMGwAIB0gIkOGI5N2M3YjMtNTY2ZC00NWRkLTgyZTctZDNjYmY2MGExZGIy2AIB4AIB&location=-1&locationIata=&locationName=Vienna+International+Airport&lpPreviewPricing=moreCars&prefcurrency=TWD&preflang=en&puDay=1&puHour=9&puMinute=0&puMonth=11&puYear=2026&filterCriteria_suitcaseCount=4" target="_blank">Booking.com 租車（維也納機場取車 → 維也納西站還車，11/1-11/10）</a></li>
-                    <li><a href="https://www.rentalcars.com/search-results?intent=direct&location=&dropLocation=&locationName=Vienna+International+Airport&locationIata=VIE&dropLocationName=Vienna&coordinates=48.119998931884766%2C16.560800552368164&dropCoordinates=48.20859909057617%2C16.373491287231445&driversAge=30&puDay=1&puMonth=11&puYear=2026&puMinute=0&puHour=9&doDay=10&doMonth=11&doYear=2026&doMinute=0&doHour=14&ftsType=A&dropFtsType=C&filterCriteria_carCategory=suvs&filterCriteria_carCategory=large&filterCriteria_transmission=AUTOMATIC" target="_blank">Rentalcars.com（維也納機場取車 → 維也納還車，11/1-11/10，SUV/大型自排）</a></li>
-                </ul>
-
                 <h2>景點官方網站（建議出發前一個月再次確認）</h2>
                 <ul>
                     <li><a href="https://www.dachstein.at/en/summer/cable-cars/gosaukammbahn" target="_blank">Gosaukamm Cable Car</a></li>
-                    <li><a href="https://www.salzwelten.at/en/hallstatt/prices-opening-hours" target="_blank">Hallstatt Skywalk (纜車）</a></li>
-                    <li><a href="https://www.seenschifffahrt.de/en/koenigssee" target="_blank">Konigssee Schifffahrt (國王湖遊船）</a></li>
-                    <li><a href="https://www.salzbergwerk.de/en/ticketshop/select" target="_blank">Berchtesgaden Salt Mile(鹽礦區導覽購票)</a></li>
+                    <li><a href="https://www.salzwelten.at/en/hallstatt/prices-opening-hours" target="_blank">Hallstatt Skywalk（纜車）</a></li>
+                    <li><a href="https://www.seenschifffahrt.de/en/koenigssee" target="_blank">Konigssee Schifffahrt（國王湖遊船）</a></li>
+                    <li><a href="https://www.salzbergwerk.de/en/ticketshop/select" target="_blank">Berchtesgaden Salt Mine（鹽礦區導覽購票）</a></li>
                     <li><a href="https://www.5schaetze.at/de/wolfgangseeschifffahrt.html" target="_blank">Wolfgangsee Schifffahrt（沃夫岡湖遊船）</a></li>
                     <li><a href="https://www.festung-hohensalzburg.at/en/" target="_blank">Hohensalzburg Fortress（薩爾斯堡城堡）</a></li>
                     <li><a href="https://nordkette.com/en/" target="_blank">Nordkette Innsbruck（因斯布魯克北山纜車）</a></li>
@@ -1871,6 +2155,518 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Lunch / local food -->
+        <div class="tab-content tfood" id="food">
+            <div class="links-section">
+                <h2>各地午餐推薦</h2>
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">綠底為推薦優先，⚠️ 為 11 月營業狀況需事前確認。晚餐以自煮為主，備案與酒類請看「晚餐與酒」分頁。</p>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>特色料理</th>
+                            <th>店家與備註</th>
+                            <th>地圖</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Day 3<br>Hallstatt</td>
+                            <td>現烤湖鱒 Reinanke</td>
+                            <td>Seehotel Grüner Baum — 哈修塔特湖本地魚</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Seehotel+Gr%C3%BCner+Baum+Hallstatt" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 4<br>St. Wolfgang</td>
+                            <td>湖畔奧地利菜</td>
+                            <td>Im Weissen Rössl（白馬飯店）— ⚠️ 四星飯店價位，Wolfgangsee 一帶 11 月常整月休館，務必先查官網</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Romantik+Hotel+Im+Weissen+R%C3%B6ssl+St.+Wolfgang" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 5<br>薩爾斯堡</td>
+                            <td><strong>Bosna</strong>（約 €5，站著吃）</td>
+                            <td>Balkan Grill Walter — Getreidegasse 33，每日 11:00-18:30。11:30 逛糧食胡同時順手解決</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Balkan+Grill+Walter+Getreidegasse+33+Salzburg" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 6<br>Berchtesgaden</td>
+                            <td>Schweinshaxe 脆皮烤豬腳、Obatzda 起司抹醬配 Brezel</td>
+                            <td>Gasthof Goldener Bär — 步行區入口，家族經營</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gasthof+Goldener+B%C3%A4r+Berchtesgaden" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 6<br>Berchtesgaden</td>
+                            <td>同上</td>
+                            <td>Gasthof Neuhaus — 1576 年建成的老店，鎮中心</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gasthof+Neuhaus+Berchtesgaden" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 6<br>國王湖</td>
+                            <td>湖中島上用餐</td>
+                            <td>Gaststätte St. Bartholomä — 全年營業，就在紅蔥頭教堂旁，你 09:50-11:05 都在那裡</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gastst%C3%A4tte+St.+Bartholom%C3%A4+K%C3%B6nigssee" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 7<br>Kaprun</td>
+                            <td>Kaiserschmarrn 皇帝煎餅、Kasnocken 起司麵疙瘩</td>
+                            <td><strong>Berggasthof Mitterberg</strong> — 已查證營業季 01.06-29.11，11:00-19:00，11/6 有開。俯瞰 Zell am See 湖</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Berggasthof+Mitterberg+Kaprun" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 7 備案<br>Kaprun</td>
+                            <td>同上</td>
+                            <td>Bergrestaurant Zaglgut（Zaglweg 10）— 營業至 11/30、<strong>每日</strong> 12:00-17:30，無休息日，是零風險的替代</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bergrestaurant+Zaglgut+Kaprun" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 8 選項 A<br>Linz</td>
+                            <td><strong>Linzer Torte</strong></td>
+                            <td>Konditorei Jindrak 本店（Herrenstraße）—「原始 Linzer Torte 之家」。據稱是世界最早有文字記載的蛋糕食譜（1653）</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Konditorei+Jindrak+Herrenstra%C3%9Fe+Linz" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 8 選項 B<br>Passau</td>
+                            <td>巴伐利亞 Brotzeit 冷盤拼盤</td>
+                            <td>舊城區（區域搜尋，非特定店家）</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Wirtshaus+Altstadt+Passau" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 9（週日）<br>布拉格</td>
+                            <td><strong>Svíčková</strong> 奶油醬燉牛肉＋麵包丸子</td>
+                            <td>Havelská Koruna — Havelská 23，自助式 jídelna、每日營業、每天 25 道當日菜色。週日最保險的選擇</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Havelsk%C3%A1+Koruna+Praha" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 9 快速<br>布拉格</td>
+                            <td><strong>Chlebíčky</strong> 開放式三明治</td>
+                            <td>Sisters, chlebíčky — Dlouhá 美食廊，站著吃幾個就飽，適合趕行程</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sisters+chleb%C3%AD%C4%8Dky+Dlouh%C3%A1+Praha" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 10（週一）<br>布拉格</td>
+                            <td><strong>Guláš ＋ knedlíky</strong>、Vepřo-knedlo-zelo</td>
+                            <td><strong>午餐 Lokál U Bílé kuželky</strong> — Míšeňská 12（小城區），週一到六 11:00-24:00。Lokál Dlouhá 的同集團分店，週一吃得到 polední menu（平日午間套餐，約 €5-8），比單點便宜一半。下城堡就到，比 Dlouhá 街那家順得多｜晚餐留給 Lokál Dlouhá（Dlouhá 33）</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Lok%C3%A1l+U+B%C3%ADl%C3%A9+ku%C5%BEelky+Praha" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 11<br>維也納</td>
+                            <td><strong>Käsekrainer</strong> 起司香腸（約 €5）</td>
+                            <td>Bitzinger Würstelstand Albertina — 就在國家歌劇院旁，你 15:15 會經過。趕時間的最佳選擇</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bitzinger+W%C3%BCrstelstand+Albertina+Wien" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 11<br>維也納</td>
+                            <td>Wiener Schnitzel</td>
+                            <td>Figlmüller Wollzeile 5，每日 11:00-22:30。招牌 Figlmüller-Schnitzel 是豬肉 €21.90，小牛肉的 Wiener Schnitzel €28</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Figlm%C3%BCller+Wollzeile+5+Wien" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 12<br>維也納</td>
+                            <td>約 120 攤各國小吃</td>
+                            <td>Naschmarkt — 行程已排 11:45。買小份吃多樣比坐下來單點划算</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Naschmarkt+Wien" target="_blank">Maps</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>其他特色料理（順路可加）</h2>
+                <ul>
+                    <li><strong>Salzburger Nockerl</strong>（Day 5 薩爾斯堡）— 舒芙蕾甜點，份量誇張，兩人分一份</li>
+                    <li><strong>Frittatensuppe</strong> 煎餅絲清湯（湖區）— 便宜暖胃，冬天湖邊很需要</li>
+                    <li><strong>Pražská šunka</strong> 布拉格火腿（Day 9-10）</li>
+                    <li><strong>Tafelspitz</strong> 水煮牛肉（維也納）— 法蘭茲皇帝愛吃的那道，要留足時間</li>
+                    <li><strong>Trdelník</strong> 煙囪捲</li>
+                </ul>
+
+                <h2>採買與營業日重點</h2>
+                <ul>
+                    <li>⚠️ <strong>11/1（日）是奧地利諸聖節法定公假日，又剛好是週日 — 超市全關。</strong>當晚要自煮的話，食材必須在維也納機場買齊（機場、火車站、加油站商店是法規例外）</li>
+                    <li>奧地利與德國超市<strong>週日一律不開</strong>。本行程的週日是 11/1 與 11/8；11/8 在捷克，捷克超市週日照常營業</li>
+                    <li>捷克 <strong>polední menu</strong>（平日午間套餐，約 €5-8）只有<strong>週一到週五</strong>約 11:30-14:00。Day 10（週一）吃得到，Day 9（週日）沒有 — 想省錢的正式一餐排在 Day 10</li>
+                    <li>巴伐利亞 <strong>Weißwurst</strong> 白香腸傳統上只在中午前供應，Day 6 的 13:30 大概吃不到</li>
+                    <li>11 月是奧地利山區 <strong>Zwischensaison</strong>（夏季結束、雪季未開），山上餐廳多休息 — Zell am See-Kaprun 官網上多數山屋 10 月初就收季。Day 7 的 Mitterberg 已查證有開；<strong>Day 4 那家出發前務必查官網</strong></li>
+                    <li>Wiener Schnitzel 依法必須用小牛肉；豬肉版菜單寫 <strong>Schnitzel vom Schwein</strong>，便宜約一半</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dinner backup & wine -->
+        <div class="tab-content tdine" id="dine">
+            <div class="links-section">
+                <h2>晚餐備案與酒</h2>
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">晚餐以自煮為主，這頁是臨時變卦時的備案，加上各地值得喝的酒與餐酒館。</p>
+
+                <div style="padding: 15px; background: #fff8e1; border-radius: 10px; border-left: 4px solid #ffc107; margin-bottom: 18px;">
+                    <strong style="color: #856404;">⚠️ 先看這三件事</strong>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px; font-size: 0.92em; color: #856404;">
+                        <li style="padding: 6px 0; border-bottom: 1px solid #ffe082;"><strong>Day 7（11/6 茵斯布魯克 The Penz Hotel）與 Day 8（11/7 CK Hotel Dvořák）住的是飯店，沒有廚房</strong> — 這兩晚不是備案，是一定得外食。而且 11/7 是週六，好店要提前訂位</li>
+                        <li style="padding: 6px 0; border-bottom: 1px solid #ffe082;"><strong>Day 2（11/1）諸聖節＋週日雙重關門</strong> — 超市全關，湖區餐廳也多半休息。這晚最沒有退路，食材務必在維也納機場買齊</li>
+                        <li style="padding: 6px 0;"><strong>Day 12（11/11）是聖馬丁節 Martinstag</strong> — 全奧地利吃 Martinigansl 烤鵝的正日，剛好是行程最後一個完整的晚上。詳見下方專節</li>
+                    </ul>
+                </div>
+
+                <h2>各晚外食備案</h2>
+                <div style="overflow-x: auto;">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Day｜住宿地</th>
+                            <th>店家</th>
+                            <th>特色與備註</th>
+                            <th>營業時間</th>
+                            <th>地圖</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Day 2-4<br>St. Gilgen</td>
+                            <td>Gasthof Brunetti</td>
+                            <td>鎮上義式／披薩，湖區官方旅遊網有收錄。⚠️ 11 月營業狀況需查</td>
+                            <td>需查證</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gasthof+Brunetti+St.+Gilgen" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 2-4<br>Wolfgangsee</td>
+                            <td>Hotel &amp; Gasthof Fürberg</td>
+                            <td>湖畔，Seestube 與 Jagdstüberl 兩間餐廳，奧地利菜。⚠️ 11 月營業狀況需查</td>
+                            <td>需查證</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gasthof+F%C3%BCrberg+St.+Gilgen" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 2-4<br>St. Gilgen</td>
+                            <td>❌ Gasthof zur Post</td>
+                            <td><strong>官網明寫 5 月至 10 月營業，11 月不要去</strong>。列在這裡是提醒你別被旅遊文章誤導 — 這是 St. Gilgen 最有名的老店，但你們去的時候是關的</td>
+                            <td>5-10 月</td>
+                            <td><a href="https://gasthofzurpost.at/en/" target="_blank">官網</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 5-6<br>薩爾斯堡</td>
+                            <td><strong>Augustiner Bräustübl</strong></td>
+                            <td>1621 年奧古斯丁修會創立的修道院啤酒館，奧地利最大。啤酒從木桶直接放出、裝在陶杯裡。旁邊 Schmankerlgang 熟食廊像市集一樣分攤位賣菜。<strong>規則是只有飲料必須在店裡買，食物可以自己帶</strong> — 想省錢就先去超市買起司香腸醃菜再進去</td>
+                            <td>週一至週五<br>15:00-23:00</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Augustiner+Br%C3%A4ust%C3%BCbl+M%C3%BClln+Salzburg" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 5-6<br>薩爾斯堡</td>
+                            <td>St. Peter Stiftskulinarium</td>
+                            <td>803 年就有文字紀錄，號稱歐洲最古老的餐廳，位在聖彼得修道院內，Falstaff 一頂帽。要正式吃一餐、或想紀念一下就選這裡。務必訂位</td>
+                            <td>每日<br>建議查官網</td>
+                            <td><a href="https://www.stpeter.at/en/" target="_blank">官網</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 5-6<br>薩爾斯堡</td>
+                            <td>Braugasthof Krimpelstätter</td>
+                            <td>1548 年首次見於文獻，奧地利家常菜（Hausmannskost），也是 Augustiner 系統。比 Bräustübl 安靜、有座位</td>
+                            <td>需查證</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Krimpelst%C3%A4tter+Salzburg" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 7 ⚠️必外食<br>茵斯布魯克</td>
+                            <td><strong>Stiftskeller</strong></td>
+                            <td>就在金屋頂旁 Franziskanerplatz，提洛菜＋Augustiner 啤酒（1516 年啤酒純淨法配方）。<strong>離 The Penz Hotel 走約 3 分鐘</strong>，每日營業、時間長，是這晚最不會出錯的選擇</td>
+                            <td>每日<br>10:00-23:00</td>
+                            <td><a href="https://www.stiftskeller.eu/en/restaurant" target="_blank">官網</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 7<br>茵斯布魯克</td>
+                            <td>Weisses Rössl</td>
+                            <td>Kiebachgasse 8，提洛老 Wirtshaus，金屋頂走 1 分鐘。電話 +43 512 583057</td>
+                            <td>需查證<br>Bar 08:00-23:00</td>
+                            <td><a href="https://www.roessl.at/en/" target="_blank">官網</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 7<br>茵斯布魯克</td>
+                            <td>Lichtblick</td>
+                            <td>Rathausgalerie 七樓，<strong>和 The Penz Hotel 同一棟建築群</strong>，直接搭電梯上去。老城與北山夜景在此最完整，適合當這趟的小奢華一餐。要訂位</td>
+                            <td>需查證</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Lichtblick+Rathausgalerie+Innsbruck" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 8 ⚠️必外食<br>CK 小鎮</td>
+                            <td><strong>Krčma v Šatlavské ulici</strong></td>
+                            <td>Horní 157，文藝復興建築改建的中世紀燒烤酒館，炭火現烤大塊肉，燭光、石牆、長桌。主廣場走 2 分鐘，離 Hotel Dvořák 也很近。<strong>11/7 是週六，務必訂位</strong></td>
+                            <td>約 11:00-24:00<br>無公休</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kr%C4%8Dma+v+%C5%A0atlavsk%C3%A9+ulici+%C4%8Cesk%C3%BD+Krumlov" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 8<br>CK 小鎮</td>
+                            <td>Papa's Living Restaurant</td>
+                            <td>Latrán 13，露台架在伏爾塔瓦河上、能看整片老城，摩拉維亞葡萄酒選得不錯。11 月露台大概太冷，室內也可以</td>
+                            <td>約 11:00-16:00<br>17:30-22:00</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Papa%27s+Living+Restaurant+%C4%8Cesk%C3%BD+Krumlov" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 8<br>CK 小鎮</td>
+                            <td>Laibon｜Restaurant Konvice</td>
+                            <td>Laibon 是河邊素食小館，氣氛好；Konvice 是老城傳統捷克菜。兩家都常出現在當地推薦名單</td>
+                            <td>需查證</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Laibon+%C4%8Cesk%C3%BD+Krumlov" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 10 only<br>布拉格</td>
+                            <td><strong>U Zlatého tygra</strong></td>
+                            <td>Husova 17，傳奇本地啤酒館，未殺菌 Pilsner Urquell。作家 Hrabal 的固定座位在這，Havel 曾帶 Clinton 來喝。⚠️ 大半桌子留給熟客，早點去、也要有站著或被拒的心理準備。<strong>週日休 — 所以 Day 9（11/8 週日）去不了，只有 Day 10 這一次機會</strong></td>
+                            <td>週一到六 15:00-23:00<br>週日休<br>建議 17:00 前到</td>
+                            <td><a href="https://prague.eu/en/objevujte/u-zlateho-tygra-beerhall/" target="_blank">官網</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 9-10<br>布拉格</td>
+                            <td>U Pinkasu</td>
+                            <td>Jungmannovo náměstí 16，1843 年布拉格第一家賣 Pilsner Urquell 的店，捷克菜＋啤酒，就在瓦茨拉夫廣場旁。<strong>每日營業 — 週日唯一保險的選擇</strong></td>
+                            <td>每日 10:00-22:30</td>
+                            <td><a href="http://www.upinkasu.com/" target="_blank">官網</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 9-10<br>布拉格</td>
+                            <td>Lokál Dlouhá</td>
+                            <td>Dlouhá 33，tankovna 桶槽啤酒＋捷克家常菜，價格合理、不坑人。⚠️ 晚上常滿，最好先訂位。小城區有同集團分店 U Bílé kuželky（Day 10 午餐那家）</td>
+                            <td>週一到六 11:00-24:00<br>週日 11:00-22:00</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Lok%C3%A1l+Dlouh%C3%A1+Praha" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 11-12<br>維也納</td>
+                            <td>Plachutta Wollzeile</td>
+                            <td>Wollzeile 38，<strong>Tafelspitz 水煮牛肉的標竿</strong>，維也納家庭自己會來的地方。牛肉分部位的講究就是這家立下的。要訂位、價位偏高</td>
+                            <td>需查證</td>
+                            <td><a href="https://www.plachutta.at/en/wollzeile.html" target="_blank">官網</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 11-12<br>維也納</td>
+                            <td>Zum Schwarzen Kameel</td>
+                            <td>Bognergasse 5，1618 年創立，熟食店＋餐酒館＋餐廳三合一。<strong>站在吧台配一杯白酒吃幾個 Brötchen 開放式三明治</strong>是很維也納的吃法，也是最便宜的進場方式</td>
+                            <td>需查證</td>
+                            <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Zum+Schwarzen+Kameel+Bognergasse+Wien" target="_blank">Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td>Day 11-12<br>維也納</td>
+                            <td>Zum alten Fassl</td>
+                            <td>傳統 Beisl（維也納小酒館），實在的家常菜、價位親民</td>
+                            <td>週一至週六 17:00-24:00<br>週日 12:00-15:00、17:00-24:00</td>
+                            <td><a href="https://www.zum-alten-fassl.at/" target="_blank">官網</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <h2>餐酒館與 Heuriger</h2>
+
+                <div style="padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0; margin-bottom: 15px;">
+                    <strong style="color: #6a1b9a;">🍷 維也納 Heuriger（酒莊酒館）— 這趟最該體驗的一件事</strong>
+                    <p style="font-size: 0.9em; margin: 10px 0 0; color: #4a148c;">維也納是全世界唯一市界內還有商業葡萄園的大都會，約 700 公頃，分布在 Stammersdorf、Grinzing、Nussdorf、Mauer 等區，可掛 Vienna DAC。Heuriger 就是酒農自己開的酒館，賣自家酒配冷熱熟食。</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 12px; font-size: 0.9em;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e1bee7;"><strong><a href="https://www.pfarrplatz.at/en/" target="_blank">Mayer am Pfarrplatz</a></strong>（Pfarrplatz 2, Heiligenstadt）— 1683 年釀酒至今，<strong>1817 年貝多芬住過這棟樓</strong>，從院子有小樓梯上去看他的住處。冷熱自助餐台、每日 12:00 開始營業、每晚 19:00 有維也納 Heurigen 現場音樂。<strong>全年營業，是 11 月最保險的 Heuriger</strong><br><span style="color: #d84315;">⚠️ 別跟同集團的 Mayer am Nussberg 搞錯 — 那家只有 4 月到 10 月營業</span></li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e1bee7;"><strong><a href="https://heuriger-wieninger.at/" target="_blank">Heuriger Wieninger</a></strong>（Stammersdorf）— Bisamberg 山腳，本地人的 Heuriger，觀光巴士不來。玻璃自助櫃裡有 Schweinsbraten 烤豬、Haussulz mit Kernöl 肉凍配南瓜籽油、Schnitzel，也有南瓜籽起司抹醬、菠菜羊乳酪酥這類。Wieninger 是 Wiener Gemischter Satz 最有名的釀酒者之一</li>
+                        <li style="padding: 8px 0;"><strong>Weingut Christ</strong>（Bisamberg）— Gemischter Satz 全手工共同採收共同處理，「比例由自然決定，不是釀酒師決定」。也附設 Heuriger</li>
+                    </ul>
+                    <p style="font-size: 0.88em; margin: 12px 0 0; color: #6a1b9a; background: #fff; padding: 10px; border-radius: 6px;"><strong>「ausg'steckt」是什麼：</strong>Heuriger 傳統上不是全年開的，門口插一束松枝（ausg'steckt）就代表現在有營業。同一家一年只開幾個時段 — 例如有名的 Buschenschank in Residence 一年只開十四個週末。<strong>11 月要去哪一家，出發前一定要上官網查當期的 Ausstecktermine。</strong></p>
+                </div>
+
+                <div style="padding: 15px; background: #e8eaf6; border-radius: 10px; border-left: 4px solid #5c6bc0; margin-bottom: 15px;">
+                    <strong style="color: #3949ab;">🍷 布拉格餐酒館 — 捷克不只有啤酒</strong>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px; font-size: 0.9em;">
+                        <li style="padding: 7px 0; border-bottom: 1px solid #c5cae9;"><strong>Vinograf</strong> — 兩間店：Míšeňská 8（查理大橋小城區那側，你們動線上）與 Senovážné náměstí。布拉格酒吧界的老前輩，以捷克酒起家，用 Coravin 保鮮系統，所以<strong>單杯可選的種類特別多</strong>，適合一次試幾種摩拉維亞品種</li>
+                        <li style="padding: 7px 0; border-bottom: 1px solid #c5cae9;"><strong>Veltlin</strong> — 專做前哈布斯堡帝國範圍的酒（奧地利、匈牙利、捷克、斯洛伐克），有一整排侍酒師可以問。想理解「中歐酒」這個概念就來這</li>
+                        <li style="padding: 7px 0; border-bottom: 1px solid #c5cae9;"><strong>Bokovka</strong> — 老城區小酒館，名字取自電影《尋找新方向》的捷克片名</li>
+                        <li style="padding: 7px 0;"><strong>VINO CIBULKA、Vinný přístav、Salabka</strong> — Salabka 是布拉格市內的葡萄園兼餐廳，要特地跑一趟</li>
+                    </ul>
+                </div>
+
+                <div style="padding: 15px; background: #efebe9; border-radius: 10px; border-left: 4px solid #795548;">
+                    <strong style="color: #4e342e;">🍺 山區不是酒鄉 — 這兩站喝啤酒</strong>
+                    <p style="font-size: 0.9em; margin: 10px 0 0; color: #4e342e;">薩爾斯堡與茵斯布魯克都不是葡萄酒產區，硬要找餐酒館反而繞遠路。<strong>薩爾斯堡的主場是 Augustiner Bräustübl 的修道院啤酒</strong>（1621 年至今，木桶＋陶杯），茵斯布魯克的 Stiftskeller 供應 Augustiner 啤酒。想喝酒的話，這兩地的餐廳酒單上一定有 Grüner Veltliner 和 Zweigelt，點杯裝就好。</p>
+                </div>
+
+                <h2>超市買啤酒</h2>
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 15px;">這條路線剛好串起三種啤酒文化：薩爾斯堡的私釀與修道院啤酒、巴伐利亞、以及全世界人均啤酒消費第一的捷克。超市價通常是餐廳的三分之一到五分之一，自煮夜配這個最對。</p>
+                <div style="overflow-x: auto;">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Day｜地點</th>
+                            <th>啤酒</th>
+                            <th>為什麼選這支</th>
+                            <th>超市價</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>Day 5-6<br>薩爾斯堡</td>
+                            <td><strong>Stiegl Goldbräu</strong></td>
+                            <td>薩爾斯堡自己的私釀廠，1492 年 6 月 16 日首見文獻、約 530 年歷史，奧地利最大的私人啤酒廠。Goldbräu 是招牌款，12° 原麥汁、超過 110 年傳統。想清爽點選 <strong>Stiegl Hell</strong>，想苦一點選 <strong>Stiegl Pils</strong>（Saphir 啤酒花，有明顯檸檬香、收尾乾）</td>
+                            <td>0.5L 瓶約 €1<br>整箱 20 瓶更省</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 5-6<br>薩爾斯堡</td>
+                            <td><strong>Trumer Pils</strong> ⭐</td>
+                            <td>Obertrum am See，薩爾斯堡北邊 20 km，<strong>1601 年至今、家族第八代</strong>，100% 再生能源釀造。開放式發酵、發酵時間拉長、只用天然啤酒花。<strong>這是整趟最值得認識的一支</strong> — 皮爾森愛好者的名單常客，而且離開薩爾斯堡就不好買</td>
+                            <td>略高於大廠</td>
+                        </tr>
+                        <tr>
+                            <td>Day 5-6 季節限定<br>薩爾斯堡</td>
+                            <td><strong>Original Stieglbock</strong><br><strong>Christkindl</strong> 蜂蜜啤酒</td>
+                            <td><strong>11 月正好是奧地利的 Bock（冬季濃啤）季節。</strong>Stieglbock 原麥汁高、細緻加啤酒花、帶焦糖與餅乾味，只出 0.5L 回收玻璃瓶、超市限量。Christkindl 是有機蜂蜜啤酒，焦糖到餅乾的香氣混蜂蜜甜，聖誕前才有。<strong>兩支都是看到就買，錯過要等一年</strong></td>
+                            <td>限量，見到再說</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 6 🇩🇪<br>Berchtesgaden</td>
+                            <td><strong>Berchtesgadener Hell</strong></td>
+                            <td>Hofbräuhaus Berchtesgaden 自己的啤酒，<strong>釀了 375 年</strong>，苦與麥甜平衡得好。既然當天會開進德國，就在德國超市買 — <strong>德國啤酒比奧地利便宜一截</strong>（同一支 Pilsner Urquell，德國 Kaufland 曾賣 €0.99，捷克超市要價可達 40 CZK）</td>
+                            <td>德國超市最便宜</td>
+                        </tr>
+                        <tr>
+                            <td>Day 6 🇩🇪<br>Berchtesgaden</td>
+                            <td>巴伐利亞 <strong>Dunkel</strong><br><strong>Weissbier</strong></td>
+                            <td>Dunkel 深色拉格才是巴伐利亞啤酒的原型，<strong>在巴伐利亞出現得比 Helles 早得多</strong>，烘烤麥香配隱約麥甜，跟當天的烤豬腳是同一套邏輯。Weissbier 小麥啤酒是巴伐利亞的另一張臉，兩種都該在德國境內買</td>
+                            <td>同上</td>
+                        </tr>
+                        <tr>
+                            <td>Day 7<br>提洛</td>
+                            <td><strong>Zillertal Bier</strong></td>
+                            <td>Zell am Ziller，<strong>1500 年至今、家族第 16 代，提洛最老的家族私釀廠</strong>，近年併購了 Tarrenz 的 Starkenberg。這種地區廠出了提洛就難找，在地買才有意義。同區還有 Huber Bräu（近 300 年，提洛東部）</td>
+                            <td>提洛超市</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 11-12<br>維也納</td>
+                            <td><strong>Ottakringer Helles</strong> ⭐</td>
+                            <td>維也納自己的啤酒廠，Ottakring 是維也納 16 區。<strong>2020 European Beer Star 銀牌</strong>。要喝「維也納的啤酒」就是這支，跟 Wiener Gemischter Satz 是同一個道理 — 大城市裡少見的本地產物</td>
+                            <td>0.5L 罐 €1.39<br>＋€0.25 押金</td>
+                        </tr>
+                        <tr>
+                            <td>Day 11-12<br>維也納</td>
+                            <td>Schwechater</td>
+                            <td>Schwechat 就在維也納機場旁邊（你們降落與起飛的那個鎮），歷史悠久的維也納啤酒。價格比 Ottakringer 再低一點</td>
+                            <td>0.5L 罐 €1.38<br>＋€0.25 押金</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>全奧地利<br>最划算</td>
+                            <td><strong>Gösser Märzen</strong></td>
+                            <td>施泰爾邦 Leoben 出品，奧地利 Märzen 的代名詞，下層發酵淡色 Vollbier。<strong>單罐 €1.59，但一次買滿 12 罐就變一罐 €0.99</strong> — 自煮好幾晚的話這是最省的買法</td>
+                            <td>€0.99-1.59<br>＋每罐 €0.25 押金</td>
+                        </tr>
+                        <tr>
+                            <td>全奧地利</td>
+                            <td>Zipfer｜Puntigamer</td>
+                            <td>Zipfer（上奧地利）比較清爽偏苦；Puntigamer（格拉茲）標語就叫「Das bierige Bier」，走紮實路線。兩支都是隨處可見的安全牌</td>
+                            <td>約 €1.3<br>＋押金</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>Day 8-10 🇨🇿<br>捷克</td>
+                            <td><strong>Pilsner Urquell 12°</strong></td>
+                            <td><strong>皮爾森啤酒的原型</strong>，1842 年生於 Plzeň，全世界的 Pilsner 都是它的後代。⚠️ 反直覺的一點：<strong>捷克超市一罐 0.5L 要價可達 40 CZK，並不是全歐洲最便宜的地方</strong>。Plzeňský Prazdroj 近年也調漲過。想喝最好狀態的請去餐廳找 tankovna</td>
+                            <td>約 25-40 CZK</td>
+                        </tr>
+                        <tr>
+                            <td>Day 8<br>CK 附近</td>
+                            <td><strong>Budvar</strong>（Budweiser Budvar）</td>
+                            <td>České Budějovice 出品，<strong>當地釀酒可追到 1265 年</strong>。České Budějovice 就在 CK 旁邊 — 這是你們 Day 8 那一帶真正的本地啤酒，喝在地的比喝 Pilsner 更對</td>
+                            <td>便宜</td>
+                        </tr>
+                        <tr>
+                            <td>Day 8-10 🇨🇿<br>捷克</td>
+                            <td>Kozel（含 <strong>Kozel Černý</strong> 黑啤）<br>Krušovice｜Gambrinus｜Staropramen</td>
+                            <td>捷克超市的常備四天王，價格低到不合理。<strong>想試深色拉格就抓 Kozel Černý</strong>，或在架上找標 <strong>tmavý</strong>（深色）的 — 深色拉格是布拉格的特色，比淡色更有層次</td>
+                            <td>約 20-30 CZK</td>
+                        </tr>
+                        <tr>
+                            <td>Day 8-10 🇨🇿<br>進階</td>
+                            <td><strong>Bernard</strong></td>
+                            <td>家族經營、走未過濾未殺菌路線的酒廠，比四大廠有個性得多，一般超市也買得到。想在捷克喝出差別，這支是最容易入手的升級</td>
+                            <td>稍高於大廠</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <div style="padding: 15px; background: #fff8e1; border-radius: 10px; border-left: 4px solid #ffc107; margin-bottom: 20px;">
+                    <strong style="color: #856404;">💰 押瓶費（Pfand）— 沒人會提醒你，但會影響你怎麼買</strong>
+                    <ul style="list-style: none; padding: 0; margin-top: 10px; font-size: 0.9em; color: #856404;">
+                        <li style="padding: 7px 0; border-bottom: 1px solid #ffe082;">🇦🇹 <strong>奧地利：2025 年 1 月 1 日起</strong>，所有 0.1-3L 的<strong>塑膠瓶與金屬罐</strong>一律加收 <strong>€0.25 押金</strong>，法律規定不得計入售價、必須分開標示（貨架上會另外寫 <em>zzgl. 0,25 € Pfand</em>）。這是全歐洲最高的押金之一 — 買 12 罐就有 €3 卡在裡面</li>
+                        <li style="padding: 7px 0; border-bottom: 1px solid #ffe082;">🇦🇹 退瓶用超市的自動回收機（<strong>Rücknahmeautomat</strong>），只要是在奧地利押金系統內的包裝都收，不限購買店家。人工退的話，店家有權拒收「超出一般家庭用量」或「本店沒賣的商品」</li>
+                        <li style="padding: 7px 0; border-bottom: 1px solid #ffe082;">🇦🇹 <strong>玻璃啤酒瓶：</strong>奧地利啤酒廠在 2025 年同一時間也把回收玻璃瓶的押金調高了（目的是提高回收率）。買整箱（Kiste，通常 20 瓶）押金金額不小，<strong>離開奧地利前記得退</strong></li>
+                        <li style="padding: 7px 0; border-bottom: 1px solid #ffe082;">⚠️ <strong>押金標誌是各國各自的系統。</strong>德國買的罐子印德國 DPG 標誌，拿回奧地利退不了；反之亦然。<strong>Day 6 去 Berchtesgaden 買德國啤酒很划算，但當天在德國喝完或當天退掉</strong>，不要囤一整箱帶回奧地利，押金就丟了</li>
+                        <li style="padding: 7px 0; border-bottom: 1px solid #ffe082;">🇩🇪 德國：單次用（Einweg，DPG 標誌）固定 €0.25；可重複使用（Mehrweg，玻璃或 PET）由廠商自訂，約 €0.08-0.15</li>
+                        <li style="padding: 7px 0;">🇨🇿 捷克：全國性的罐／PET 押金系統<strong>尚未上路</strong>（規劃中，押金約 4-5 CZK），玻璃瓶傳統上有小額回收押金。<strong>看收據上有沒有多一筆就知道</strong>，出發前可再確認一次是否已實施</li>
+                    </ul>
+                    <p style="font-size: 0.88em; margin: 12px 0 0; color: #856404; background: #fff; padding: 10px; border-radius: 6px;"><strong>實務結論：</strong>想省事就買金屬罐，別在喝完後把罐子壓爛到條碼讀不出來，然後<strong>在離開每個國家前找一台回收機一次退光</strong>。想省錢就在德國（Day 6）多買一點當天喝掉。</p>
+                </div>
+
+                <div style="padding: 15px; background: #ffebee; border-radius: 10px; border-left: 4px solid #e53935; margin-bottom: 20px;">
+                    <strong style="color: #c62828;">⚠️ 買酒的關門陷阱</strong>
+                    <p style="font-size: 0.9em; margin: 10px 0 0; color: #b71c1c;"><strong>奧地利與德國超市週日一律不開，酒也一起買不到。</strong>本行程的週日是 11/1 與 11/8 — 11/1 還疊上諸聖節法定假日，雙重關門。<strong>那晚要喝的啤酒必須在維也納機場買齊</strong>（機場、火車站、加油站商店是法規例外，但價格會高一截）。11/8 在捷克，捷克超市週日照常營業，沒問題。</p>
+                </div>
+
+                <h2>酒單怎麼點</h2>
+
+                <p style="font-size: 0.9em; color: #666; margin-bottom: 12px;"><strong>啤酒（餐廳點單）</strong></p>
+                <ul>
+                    <li><strong>奧地利／德國杯型：</strong><strong>Krügerl</strong> 0.5L（大杯，最常點的）｜<strong>Seidl</strong> 0.3L（小杯）｜<strong>Pfiff</strong> 0.2L（很小，配餐前）。點就說「ein Krügerl, bitte」</li>
+                    <li><strong>捷克的「度數」不是酒精度</strong> — 10°、12° 指的是<strong>原麥汁濃度</strong>（degrees Balling，1843 年由捷克化學家發明的單位，與 Plato 幾乎等價）。實際酒精度：<strong>10° 約 3.8-4.2%、12° 約 4.5-5.0%</strong>。點 12° 就對了</li>
+                    <li><strong>捷克三級分類：</strong><strong>výčepní</strong> 7-10°（日常淡啤）｜<strong>ležák</strong> 11-12°（拉格，標準款）｜<strong>speciální</strong> 13° 以上（濃）。菜單看到這幾個字就能判斷強度</li>
+                    <li>捷克杯型：<strong>malé</strong> 小杯 0.3L｜<strong>velké</strong> 大杯 0.5L。<strong>tmavý</strong>＝深色，<strong>tmavý ležák</strong>（深色拉格）是布拉格的地方特色，比淡色複雜，值得點一杯試</li>
+                    <li><strong>tankovna／tankové pivo</strong>：未殺菌啤酒用冷藏槽車直送店家，存放在店內臥式酒槽約 6°C，離開酒廠幾天內就要喝掉、保存期只約一週。<strong>看到店門口寫 tankovna 就進去 — 這是喝到最好狀態 Pilsner 的唯一辦法</strong>，也是為什麼在捷克餐廳喝比超市買值得</li>
+                </ul>
+
+                <p style="font-size: 0.9em; color: #666; margin: 15px 0 12px;"><strong>奧地利白酒</strong></p>
+                <ul>
+                    <li><strong>Grüner Veltliner</strong>（綠維特利納）— 奧地利的國民白酒，白胡椒味＋青蘋果＋高酸。<strong>配炸豬排是教科書組合</strong>。Wachau／Kamptal／Kremstal 三個產區品質最穩</li>
+                    <li><strong>Riesling</strong> — Wachau 的雷斯林是世界級，而且比德國同類乾得多，不會甜</li>
+                    <li><strong>Wiener Gemischter Satz DAC</strong> — 維也納的身分證。同一塊地混種多種葡萄、<strong>一起採收、一起釀</strong>，2013 年份起取得 DAC 法定產區保護。只有維也納對它有嚴格定義，其他地方標 Gemischter Satz 的是跟風。找 <strong>Wieninger、Christ、Cobenzl、Edlmoser、Zahel、Mayer am Pfarrplatz</strong></li>
+                    <li><strong>Rotgipfler / Zierfandler</strong> — Thermenregion（維也納南邊）的稀有品種，基本上只有奧地利有，看到值得試</li>
+                </ul>
+
+                <p style="font-size: 0.9em; color: #666; margin: 15px 0 12px;"><strong>奧地利紅酒</strong></p>
+                <ul>
+                    <li><strong>Zweigelt</strong> — 最普及的紅，酸櫻桃味、單寧輕，好喝不挑菜。點杯裝最常見的就是它</li>
+                    <li><strong>Blaufränkisch</strong> — Burgenland 的主力，架構紮實、單寧明顯，配烤肉和 Gansl 都好</li>
+                    <li><strong>St. Laurent</strong> — 黑皮諾的親戚，比 Zweigelt 細緻，價位也高一階</li>
+                </ul>
+
+                <p style="font-size: 0.9em; color: #666; margin: 15px 0 12px;"><strong>點單術語</strong></p>
+                <ul>
+                    <li>單杯白酒：1/8 公升叫 <strong>ein Achtel</strong>，1/4 公升叫 <strong>ein Viertel</strong>（Heuriger 最常見的量）</li>
+                    <li><strong>G'spritzter</strong> — 白酒加氣泡水，本地人日常喝法，酒精低、解膩</li>
+                    <li><strong>Sturm</strong> — 還在發酵的葡萄汁，混濁、微氣泡、帶甜，是奧地利秋天的限定飲料。<strong>⚠️ 傳統上季節到 11/11 Martini 前後就收</strong>（法律允許賣到 12/31，但條件是必須仍在發酵）。你們 11 月初正好卡在尾巴上 — <strong>看到就點，這是最後機會</strong></li>
+                </ul>
+
+                <p style="font-size: 0.9em; color: #666; margin: 15px 0 12px;"><strong>捷克葡萄酒</strong></p>
+                <ul>
+                    <li>捷克是啤酒國，但<strong>摩拉維亞（Morava）</strong>的酒真的好，價格又低。想換口味的時候值得點</li>
+                    <li>白：<strong>Pálava</strong>（捷克自育品種，香氣奔放，最有辨識度）、Ryzlink rýnský（雷斯林）、Veltlínské zelené（就是 Grüner Veltliner）、Müller-Thurgau</li>
+                    <li>紅：<strong>Frankovka</strong>（就是 Blaufränkisch）、Svatovavřinecké（就是 St. Laurent）、Modrý Portugal</li>
+                </ul>
+
+                <h2>超市買葡萄酒（想換口味時）</h2>
+                <ul>
+                    <li>奧地利 <strong>Billa／Spar／Hofer</strong> 都有整排本地酒，€4-10 這個帶就很好喝。<strong>玻璃酒瓶不在 €0.25 押金範圍內</strong>（押金只針對塑膠瓶與金屬罐），買酒不會卡押金</li>
+                    <li>好入手的 Grüner Veltliner：<strong>Lenz Moser Selection</strong>（Billa 賣最好的 GV，下奧地利）｜<strong>Ja! Natürlich Grüner Veltliner</strong>（Billa 有機自有品牌，由 Poysdorf 的 Weingut Oppenauer 代釀，便宜又乾淨）｜<strong>Cobenzl Grüner Veltliner Classic</strong>（維也納市政府自己的酒莊，經營超過 110 年 — <strong>用超市價買到「維也納酒」最簡單的方式</strong>）｜想升一階找 <strong>Steininger Kamptal DAC</strong></li>
+                    <li>想買好一點：維也納的 <strong><a href="https://www.weinco.at/filialen/wien" target="_blank">Wein &amp; Co</a></strong>，店面＋吧台合一，可以先在吧台喝過再決定買哪支。<strong>Naschmarkt 那間就在分離派會館金色圓頂旁邊</strong>，Day 12 逛完市場順路</li>
+                    <li>捷克 Albert／Billa／Lidl 的摩拉維亞酒約 120-250 CZK 就有水準，比奧地利便宜一截</li>
+                </ul>
+
+                <h2>11/11 聖馬丁節 — 行程最後一晚剛好撞上</h2>
+                <div style="padding: 15px; background: #f3e5f5; border-radius: 10px; border-left: 4px solid #9c27b0; margin-bottom: 15px;">
+                    <p style="font-size: 0.92em; margin: 0 0 12px; color: #4a148c;">Day 12（11/11）是中歐最好吃的節日之一，而且是你們在歐洲的最後一個完整晚上。奧地利和捷克在同一天各有各的傳統。</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9em;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e1bee7;"><strong>🇦🇹 奧地利：Martinigansl</strong>（聖馬丁烤鵝）配紅甘藍與各式麵團子。11/11 是正日，維也納餐廳這天需求極高、價格年年漲，<strong>務必提前訂位</strong>。好消息是實務上很多店從 10 月下旬供應到 11 月下旬，所以 <strong>11/10、11/11 兩晚都吃得到</strong>，不必硬擠正日。搭配就點 Blaufränkisch 或 Zweigelt</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #e1bee7;"><strong>🇨🇿 捷克：Svatomartinské víno</strong>（聖馬丁新酒）在 11/11 上午 <strong>11:11 準時開瓶</strong>，全國同步。法定只能用早熟品種：Müller-Thurgau、Veltlínské červené rané、Muškát moravský、Zweigeltrebe、Modrý Portugal、Svatovavřinecké。只發酵幾週，酒精低、清爽帶微氣泡，酒農建議復活節前喝完。捷克同一天也吃烤鵝配紅甘藍與 knedlíky</li>
+                        <li style="padding: 8px 0;"><strong>⚠️ 時間差：你們 11/10 早上就離開布拉格，剛好差一天錯過捷克新酒。</strong>想喝的話有兩條路 — Day 9 或 Day 10 在布拉格酒館直接問有沒有預購／預告，或者到維也納找有賣捷克與摩拉維亞酒的店（Veltlin 那類專做前哈布斯堡範圍的酒館思路）</li>
+                    </ul>
+                    <p style="font-size: 0.9em; margin: 12px 0 0; color: #6a1b9a; background: #fff; padding: 10px; border-radius: 6px;"><strong>建議：</strong>11/11 晚上訂一家有 Gansl 的維也納餐廳，配一杯 Wiener Gemischter Satz 或 Blaufränkisch 收尾。這比再吃一次炸豬排值得得多，而且只有這幾天吃得到。</p>
+                </div>
+
+                <h2>訂位與實務注意</h2>
+                <ul>
+                    <li><strong>最該提前訂的三晚：</strong>Day 7（11/6 週五，茵斯布魯克，沒廚房）｜Day 8（11/7 週六，CK，沒廚房＋週六）｜Day 12（11/11 聖馬丁節，維也納，要吃 Gansl 就得訂）</li>
+                    <li><strong>warme Küche（熱食時段）：</strong>小鎮的 Gasthof 常只在固定時段供應熱食（例如 17:00-21:00），過了就只剩喝的。山區和湖區收得特別早，17:30 前到最安全 — 這也剛好符合行程首頁的日落提醒</li>
+                    <li><strong>Ruhetag（公休日）：</strong>奧地利小鎮餐廳普遍每週休一到兩天，最常見是週一、週二。Day 3（11/2 週一）在湖區要特別注意</li>
+                    <li><strong>小費：</strong>奧地利與捷克習慣湊整數或加約 5-10%。<strong>結帳時直接跟服務生說要付的總金額</strong>（例如帳單 €43 就說「fünfundvierzig」付 €45），不要把錢留在桌上就走</li>
+                    <li><strong>布拉格避坑：</strong>老城廣場正面第一排的餐廳一律避開。服務生沒問就送上桌的麵包或小菜是會計費的，不想要就直接請他收回去</li>
+                    <li><strong>11 月是 Zwischensaison：</strong>夏季結束、雪季未開，湖區與冰川區餐廳整月休館非常常見。<strong>上面每一家標「需查證」的，出發前一個月都要再查一次官網或 Google 營業時間</strong> — 本頁的營業時間是以現行公告整理的，一年後可能已變動</li>
+                </ul>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+
+
+</body></html>
