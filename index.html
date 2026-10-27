@@ -289,7 +289,8 @@
         .timeline::before {
             content: '';
             position: absolute;
-            left: 7px;
+            /* Centred on the dots: 28px padding - 25px dot offset + 13px / 2 - 0.5px */
+            left: 9px;
             top: 6px;
             bottom: 6px;
             width: 1px;
@@ -309,8 +310,11 @@
             position: absolute;
             left: -25px;
             top: 7px;
-            width: 9px;
-            height: 9px;
+            /* Pseudo-elements are not matched by "*", so set the box model
+               explicitly: 13px outer size including the 2px border. */
+            box-sizing: border-box;
+            width: 13px;
+            height: 13px;
             border-radius: 50%;
             background: var(--card);
             border: 2px solid var(--pine-soft);
@@ -708,6 +712,7 @@
             .photo-gallery,
             .photo-gallery.two-col { grid-template-columns: 1fr; }
             .timeline { padding-left: 25px; }
+            .timeline::before { left: 6px; }
             .tab-nav label.lnk { margin-left: 0; }
         }
 
@@ -769,7 +774,7 @@
         body.printing .day-card-rich .photo-gallery { margin-top: auto; }
         body.printing .timeline {
             column-count: 2;
-            column-gap: 36px;
+            column-gap: 36px; /* right column's dots sit inside this gap */
             padding-left: 24px;
             margin-bottom: 10px;
         }
@@ -778,12 +783,29 @@
         body.printing .timeline::before { display: none; }
         /* Day 2 has few items: keep a single column */
         body.printing #day2 .timeline { column-count: 1; padding-left: 28px; }
-        body.printing .timeline-item { margin-bottom: 8px; break-inside: avoid; }
+        body.printing .timeline-item { margin-bottom: 8px; break-inside: avoid; gap: 10px; }
+        /* The time is set smaller (0.88em) than the title (1em), so with the
+           shared 1.7 line-height its line box is shorter and the text sits
+           higher. Match the title's line box (1.7 / 0.88) so both are
+           vertically centred on the dot. */
+        body.printing .timeline-time { min-width: 44px; line-height: calc(1.7 / 0.88); }
+        /* The two print columns are narrow, so CJK text would otherwise wrap
+           in the middle of a word (e.g. 展|覽, 車|停). keep-all breaks only at
+           spaces and punctuation; overflow-wrap is the fallback for a run that
+           is too long for one line; text-wrap avoids one-character last lines. */
+        body.printing .timeline-content strong,
+        body.printing .timeline-content p,
+        body.printing .mvp-text p,
+        body.printing .warning-box {
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+            text-wrap: pretty;
+        }
         body.printing .timeline-item::before { z-index: 1; }
         body.printing .timeline-item::after {
             content: '';
             position: absolute;
-            left: -21px;
+            left: -19px; /* dot spans -25px..-12px, centre -18.5px */
             top: 12px;
             bottom: -15px; /* 8px item gap + 7px down to the next dot */
             width: 1px;
